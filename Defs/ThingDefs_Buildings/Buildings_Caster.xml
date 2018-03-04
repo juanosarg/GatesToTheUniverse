@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+
+
+  
+  <ThingDef ParentName="BenchBase">
+    <defName>GU_FarcasterPortal</defName>
+    <label>ancient farcaster portal</label>
+	<thingClass>GatesToTheUniverse.Building_Farcaster</thingClass>
+	<description>Activate this!.</description>
+    <graphicData>
+      <texPath>Things/Building/Misc/PartySpot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>    
+		<drawSize>(2,2)</drawSize>	
+    </graphicData>
+ 
+    <costList>
+       <Steel>200</Steel>
+      <Component>2</Component>
+	 
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <WorkToBuild>1500</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>-8</Beauty>
+    </statBases>
+		<size>(2,2)</size>
+    <passability>PassThroughOnly</passability>
+    <pathCost>70</pathCost>
+    <surfaceType>Item</surfaceType>
+	 <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+   
+    
+    
+	<comps>
+		
+
+      <li Class="CompProperties_Breakdownable"/>
+    </comps>
+	<designationCategory>Production</designationCategory>
+  </ThingDef>
+  
+     
+
+
+
+</Defs>
