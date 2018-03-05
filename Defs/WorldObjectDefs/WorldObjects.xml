@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+ 
+  <WorldObjectDef>
+    <defName>GU_FarcasterDestination</defName>
+	<worldObjectClass>GatesToTheUniverse.FarcasterDestination</worldObjectClass>
+    <label>farcaster destination</label>
+    <description>A distant planet.</description>
+    <texture>World/WorldObjects/TribalFactionBase</texture>
+	<mapGenerator>GU_FarcasterMap</mapGenerator>
+	<expandingIcon>true</expandingIcon>
+	<expandingIconPriority>8</expandingIconPriority>
+
+  </WorldObjectDef>
+ 
+
+</Defs>

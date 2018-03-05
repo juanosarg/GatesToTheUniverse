@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <MapGeneratorDef>
+    <defName>GU_FarcasterMap</defName>
+    <selectionWeight>0</selectionWeight>
+  </MapGeneratorDef>
+  
+  <!-- Generate abstract grids-->
+
+
+  <GenStepDef>
+    <defName>GU_ElevationFertility</defName>
+    <linkWithMapGenerator>GU_FarcasterMap</linkWithMapGenerator>
+    <order>10</order>
+    <genStep Class="GenStep_ElevationFertility"/>
+  </GenStepDef>
+  
+  <GenStepDef>
+    <defName>GU_Caves</defName>
+    <linkWithMapGenerator>GU_FarcasterMap</linkWithMapGenerator>
+    <order>11</order>
+    <genStep Class="GenStep_Caves"/>
+  </GenStepDef>
+ 
+
+
+  <!-- Generate basic rocks and terrain from grid-->
+ 
+  
+  <GenStepDef>
+    <defName>GU_Terrain</defName>
+    <linkWithMapGenerator>GU_FarcasterMap</linkWithMapGenerator>
+    <order>210</order>
+    <genStep Class="GatesToTheUniverse.GenStep_TerrainFarcaster"/>
+  </GenStepDef>
+  
+
+  
+  <GenStepDef>
+    <defName>GU_FindPlayerStartSpot</defName>
+    <linkWithMapGenerator>GU_FarcasterMap</linkWithMapGenerator>
+    <order>600</order>
+    <genStep Class="GenStep_FindPlayerStartSpot"/>
+  </GenStepDef>
+  
+  <GenStepDef>
+    <defName>GU_Fog</defName>
+    <linkWithMapGenerator>GU_FarcasterMap</linkWithMapGenerator>
+    <order>1500</order>
+    <genStep Class="GenStep_Fog"/>
+  </GenStepDef>
+
+ 
+
+</Defs>
