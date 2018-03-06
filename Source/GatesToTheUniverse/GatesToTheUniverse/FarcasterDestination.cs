@@ -25,14 +25,14 @@ namespace GatesToTheUniverse
         }
 
 
-        public override MapGeneratorDef MapGeneratorDef
+       /* public override MapGeneratorDef MapGeneratorDef
         {
             get
             {
                
                 return DefDatabase<MapGeneratorDef>.GetNamed("GU_FarcasterMap", true);
             }
-        }
+        }*/
 
 
         public override bool ShouldRemoveMapNow(out bool alsoRemoveWorldObject)

@@ -1,7 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+	<ThingDef ParentName="BuildingBase">
+		<defName>GU_JuryRiggedFarcasterPortal</defName>
+		<label>jury-rigged farcaster portal</label>
+		<thingClass>GatesToTheUniverse.Building_JuryRiggedFarcaster</thingClass>
+		<description>Activate this!</description>
+		<graphicData>
+			<texPath>Things/Building/GU_FarcasterJuryRigged</texPath>
+			<graphicClass>Graphic_Single</graphicClass>    
+			<drawSize>(6,6)</drawSize>	
+			<shaderType>CutoutComplex</shaderType>
 
+		</graphicData>
+		<building>
+			<trapUnarmedGraphicData>
+
+				<texPath>Things/Building/GU_FarcasterJuryRiggedActivated</texPath>
+				<graphicClass>Graphic_Single</graphicClass>    
+				<drawSize>(6,6)</drawSize>	
+				<shaderType>CutoutComplex</shaderType>
+			</trapUnarmedGraphicData>
+
+		</building>
+    <drawerType>RealtimeOnly</drawerType>
+    <tickerType>Normal</tickerType>
+		<costList>
+			<Steel>200</Steel>
+			<Component>2</Component>
+
+		</costList>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<WorkToBuild>1500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-8</Beauty>
+		</statBases>
+		<size>(6,6)</size>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<blockWind>true</blockWind>    <pathCost>70</pathCost>
+		<surfaceType>Item</surfaceType>
+		<hasInteractionCell>False</hasInteractionCell>
+		<rotatable>false</rotatable>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+
+
+
+		<comps>
+
+
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<designationCategory>GU_GatesToTheUniverseTab</designationCategory>
+		<researchPrerequisites><li>GR_BasicFarcasterResearch</li></researchPrerequisites>
+
+	</ThingDef>
 
 
 	<ThingDef ParentName="BuildingBase">
