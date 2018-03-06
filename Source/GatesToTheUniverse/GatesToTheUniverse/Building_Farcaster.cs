@@ -118,16 +118,18 @@ namespace GatesToTheUniverse
         {
             mapHome = this.Map;
             Messages.Message("GU_FarcasterActivated".Translate(), MessageTypeDefOf.PositiveEvent);
-            FarcasterDestination worldObjectFarcaster = (FarcasterDestination)WorldObjectMaker.MakeWorldObject(DefDatabase<WorldObjectDef>.GetNamed("GU_FarcasterDestination", true));
+            FarcasterDestination worldObjectFarcaster = (FarcasterDestination)WorldObjectMaker.MakeWorldObject(DefDatabase<WorldObjectDef>.GetNamed("GU_FarcasterDestinationDeltaServitus", true));
             mapParent = (MapParent)worldObjectFarcaster;
             ///mapParent = (MapParent)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.FactionBase);
             mapParent.Tile = TileFinder.RandomStartingTile();
             mapParent.SetFaction(Faction.OfPlayer);
             worldObjectFarcaster.mapHome = mapHome;
+            worldObjectFarcaster.mapGen = DefDatabase<MapGeneratorDef>.GetNamed("GU_FarcasterMapDeltaServitus", true);
+
             Find.WorldObjects.Add(mapParent);
             Map mymap = new Map();
             mymap = GetOrGenerateMapUtility.GetOrGenerateMap(mapParent.Tile, Find.World.info.initialMapSize, null);
-            mymap.TileInfo.biome = DefDatabase<BiomeDef>.GetNamed("GU_Alien1", true);
+            mymap.TileInfo.biome = DefDatabase<BiomeDef>.GetNamed("GU_DeltaServitusIV", true);
             //Log.Message(mymap.Biome.ToString());
             mapParent.Tile = base.Tile;
 

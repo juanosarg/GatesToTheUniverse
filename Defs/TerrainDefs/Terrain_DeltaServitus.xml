@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <TerrainDef>
+    <defName>GU_MetalFloor1</defName>
+    <label>seamless polymer flooring</label>
+    <texturePath>Terrain/Surfaces/GU_MetalFloor1</texturePath>
+    <edgeType>FadeRough</edgeType>
+	<color>(30,30,30)</color>
+
+    <renderPrecedence>350</renderPrecedence>
+    <pathCost>4</pathCost>
+    <statBases>
+      <Beauty>-1</Beauty>
+      <Cleanliness>-1</Cleanliness>
+    </statBases>
+    <scatterType>SoftDry</scatterType>
+    <affordances>
+      <li>Light</li>
+      <li>Heavy</li>
+  
+    </affordances>
+    <terrainFilthDef>FilthSand</terrainFilthDef>
+    <fertility>0</fertility>
+    <takeFootprints>false</takeFootprints>
+  </TerrainDef>
+  
+  <TerrainDef>
+    <defName>GU_MetalFloor2</defName>
+    <label>metallic floor</label>
+    <texturePath>Terrain/Surfaces/GU_MetalFloor2</texturePath>
+    <edgeType>FadeRough</edgeType>
+	<color>(30,30,30)</color>
+    <renderPrecedence>350</renderPrecedence>
+    <pathCost>4</pathCost>
+    <statBases>
+      <Beauty>-1</Beauty>
+      <Cleanliness>-1</Cleanliness>
+    </statBases>
+    <scatterType>SoftDry</scatterType>
+    <affordances>
+      <li>Light</li>
+      <li>Heavy</li>
+  
+    </affordances>
+    <terrainFilthDef>FilthSand</terrainFilthDef>
+    <fertility>0</fertility>
+    <takeFootprints>false</takeFootprints>
+  </TerrainDef>
+  
+  <TerrainDef>
+    <defName>GU_MetalFloor3</defName>
+    <label>more metallic floor</label>
+    <texturePath>Terrain/Surfaces/GU_MetalFloor3</texturePath>
+		<color>(30,30,30)</color>
+
+    <edgeType>FadeRough</edgeType>
+    <renderPrecedence>350</renderPrecedence>
+    <pathCost>4</pathCost>
+    <statBases>
+      <Beauty>-1</Beauty>
+      <Cleanliness>-1</Cleanliness>
+    </statBases>
+    <scatterType>SoftDry</scatterType>
+    <affordances>
+      <li>Light</li>
+      <li>Heavy</li>
+  
+    </affordances>
+    <terrainFilthDef>FilthSand</terrainFilthDef>
+    <fertility>0</fertility>
+    <takeFootprints>false</takeFootprints>
+  </TerrainDef>
+
+ 
+</Defs>

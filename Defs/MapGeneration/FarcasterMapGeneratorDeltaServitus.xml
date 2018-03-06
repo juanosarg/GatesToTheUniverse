@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <MapGeneratorDef>
+    <defName>GU_FarcasterMapDeltaServitus</defName>
+    <selectionWeight>0</selectionWeight>
+  </MapGeneratorDef>
+  
+  <!-- Generate abstract grids-->
+
+
+  <GenStepDef>
+    <defName>GU_ElevationFertilityDeltaServitus</defName>
+    <linkWithMapGenerator>GU_FarcasterMapDeltaServitus</linkWithMapGenerator>
+    <order>10</order>
+    <genStep Class="GenStep_ElevationFertility"/>
+  </GenStepDef>
+  
+  <GenStepDef>
+    <defName>GU_CavesDeltaServitus</defName>
+    <linkWithMapGenerator>GU_FarcasterMapDeltaServitus</linkWithMapGenerator>
+    <order>11</order>
+    <genStep Class="GenStep_Caves"/>
+  </GenStepDef>
+ 
+
+
+  <!-- Generate basic rocks and terrain from grid-->
+ 
+  
+  <GenStepDef>
+    <defName>GU_TerrainDeltaServitus</defName>
+    <linkWithMapGenerator>GU_FarcasterMapDeltaServitus</linkWithMapGenerator>
+    <order>210</order>
+    <genStep Class="GatesToTheUniverse.GenStep_TerrainFarcasterDeltaServitus"/>
+  </GenStepDef>
+  
+
+  
+  <GenStepDef>
+    <defName>GU_FindPlayerStartSpotDeltaServitus</defName>
+    <linkWithMapGenerator>GU_FarcasterMapDeltaServitus</linkWithMapGenerator>
+    <order>600</order>
+    <genStep Class="GenStep_FindPlayerStartSpot"/>
+  </GenStepDef>
+  
+  <GenStepDef>
+    <defName>GU_FogDeltaServitus</defName>
+    <linkWithMapGenerator>GU_FarcasterMapDeltaServitus</linkWithMapGenerator>
+    <order>1500</order>
+    <genStep Class="GenStep_Fog"/>
+  </GenStepDef>
+
+ 
+
+</Defs>

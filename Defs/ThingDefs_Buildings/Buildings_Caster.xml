@@ -5,7 +5,7 @@
 		<defName>GU_JuryRiggedFarcasterPortal</defName>
 		<label>jury-rigged farcaster portal</label>
 		<thingClass>GatesToTheUniverse.Building_JuryRiggedFarcaster</thingClass>
-		<description>Activate this!</description>
+		<description>This contraption is a primitive attempt at reverse engineering the farcaster technology. Hopefully it should link with the derelict network of farcasters around Sigma Alcyon IIb.</description>
 		<graphicData>
 			<texPath>Things/Building/GU_FarcasterJuryRigged</texPath>
 			<graphicClass>Graphic_Single</graphicClass>    
@@ -118,8 +118,8 @@
 	
 	<ThingDef ParentName="BuildingBase">
 		<defName>GU_AncientFarcasterPortal</defName>
-		<label>ancient farcaster portal</label>
-		<description>Allows you to return to your home Rimworld.</description>
+		<label>rusty ancient farcaster portal</label>
+		<description>This farcaster portal has been left here, abandoned, for a VERY long time. It appears to still be functional, though. Allows you to return to your homeworld.</description>
 		
 		<thingClass>GatesToTheUniverse.Building_AncientFarcaster</thingClass>
 		<graphicData>

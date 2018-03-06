@@ -6,9 +6,21 @@
     <defName>GU_FarcasterDestinationSigmaAlcyon</defName>
 	<worldObjectClass>GatesToTheUniverse.FarcasterDestination</worldObjectClass>
     <label>farcaster destination: Sigma Alcyion IIb</label>
-    <description>A farcaster link to distant, red-tinged moon, orbitting a planet around a Red Dwarf star.</description>
+    <description>A farcaster link to a distant, red-tinged moon, orbitting its planet around a Red Dwarf star.</description>
     <texture>World/WorldObjects/TribalFactionBase</texture>
 	<mapGenerator>GU_FarcasterMapSigmaAlcyon</mapGenerator>
+	<expandingIcon>true</expandingIcon>
+	<expandingIconPriority>8</expandingIconPriority>
+
+  </WorldObjectDef>
+  
+  <WorldObjectDef>
+    <defName>GU_FarcasterDestinationDeltaServitus</defName>
+	<worldObjectClass>GatesToTheUniverse.FarcasterDestination</worldObjectClass>
+    <label>farcaster destination: Delta Servitus IV</label>
+    <description>A farcaster link to a strange metallic planetoid.</description>
+    <texture>World/WorldObjects/TribalFactionBase</texture>
+	<mapGenerator>GU_FarcasterMapDeltaServitus</mapGenerator>
 	<expandingIcon>true</expandingIcon>
 	<expandingIconPriority>8</expandingIconPriority>
 

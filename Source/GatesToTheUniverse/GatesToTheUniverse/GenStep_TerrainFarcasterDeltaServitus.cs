@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace GatesToTheUniverse
 {
-    public class GenStep_TerrainFarcaster : GenStep
+    public class GenStep_TerrainFarcasterDeltaServitus : GenStep
     {
 
         private ModuleBase freqFactorNoise;
@@ -24,13 +24,22 @@ namespace GatesToTheUniverse
         private static Dictionary<ThingDef, float> desiredProportions = new Dictionary<ThingDef, float>();
         private static int totalExtant = 0;
         private const float PlantMinGrowth = 0.07f;
+        TerrainDef theBaseRocks;
+        ThingDef theRockChunks;
+        ThingDef theRocksThemselves;
+
 
 
 
         public BiomeDef chooseABiome()
         {
+            theBaseRocks = DefDatabase<TerrainDef>.GetNamed("GU_RedQuartzBase", true);
+            theRockChunks = DefDatabase<ThingDef>.GetNamed("GU_ChunkRoseQuartz", true);
+            theRocksThemselves=DefDatabase<ThingDef>.GetNamed("GU_RoseQuartz", true);
 
-            int randomNumber = rand.Next(1, 3);
+            return DefDatabase<BiomeDef>.GetNamed("GU_DeltaServitusIV", true);
+
+            /*int randomNumber = rand.Next(1, 3);
             if (randomNumber == 1)
             {
                 return DefDatabase<BiomeDef>.GetNamed("GU_Alien1", true);
@@ -41,7 +50,7 @@ namespace GatesToTheUniverse
                 return DefDatabase<BiomeDef>.GetNamed("GU_Alien1", true);
 
             }
-            else return null;
+            else return null;*/
         }
 
         public override void Generate(Map map)
@@ -91,13 +100,13 @@ namespace GatesToTheUniverse
             }
             map.regionAndRoomUpdater.Enabled = false;
             float num = 0.7f;
-            List<GenStep_TerrainFarcaster.RoofThreshold> list2 = new List<GenStep_TerrainFarcaster.RoofThreshold>();
-            list2.Add(new GenStep_TerrainFarcaster.RoofThreshold
+            List<GenStep_TerrainFarcasterDeltaServitus.RoofThreshold> list2 = new List<GenStep_TerrainFarcasterDeltaServitus.RoofThreshold>();
+            list2.Add(new GenStep_TerrainFarcasterDeltaServitus.RoofThreshold
             {
                 roofDef = RoofDefOf.RoofRockThick,
                 minGridVal = num * 1.14f
             });
-            list2.Add(new GenStep_TerrainFarcaster.RoofThreshold
+            list2.Add(new GenStep_TerrainFarcasterDeltaServitus.RoofThreshold
             {
                 roofDef = RoofDefOf.RoofRockThin,
                 minGridVal = num * 1.04f
@@ -111,7 +120,7 @@ namespace GatesToTheUniverse
                 {
                     if (caves[current] <= 0f)
                     {
-                        ThingDef def = GenStep_TerrainFarcaster.RockDefAt(current);
+                        ThingDef def = RockDefAt(current);
                         if (map.Center.DistanceTo(current) > 5f) { 
                             GenSpawn.Spawn(def, current, map);
                         }
@@ -181,9 +190,9 @@ namespace GatesToTheUniverse
             List<ThingDef> list3 = biome1.AllWildPlants.ToList<ThingDef>();
             for (int i = 0; i < list3.Count; i++)
             {
-                GenStep_TerrainFarcaster.numExtant.Add(list3[i], 0);
+                GenStep_TerrainFarcasterDeltaServitus.numExtant.Add(list3[i], 0);
             }
-            GenStep_TerrainFarcaster.desiredProportions = GenPlant.CalculateDesiredPlantProportions(biome1);
+            GenStep_TerrainFarcasterDeltaServitus.desiredProportions = GenPlant.CalculateDesiredPlantProportions(biome1);
             float num4 = biome1.plantDensity;
             foreach (IntVec3 c in map.AllCells.InRandomOrder(null))
             {
@@ -218,15 +227,15 @@ namespace GatesToTheUniverse
                                     plant.Age = Rand.Range(0, Mathf.Max(plant.def.plant.LifespanTicks - 50, 0));
                                 }
                                 GenSpawn.Spawn(plant, c2, map);
-                                GenStep_TerrainFarcaster.RecordAdded(thingDef);
+                                GenStep_TerrainFarcasterDeltaServitus.RecordAdded(thingDef);
                             }
                         }
                     }
                 }
             }
-            GenStep_TerrainFarcaster.numExtant.Clear();
-            GenStep_TerrainFarcaster.desiredProportions.Clear();
-            GenStep_TerrainFarcaster.totalExtant = 0;
+            GenStep_TerrainFarcasterDeltaServitus.numExtant.Clear();
+            GenStep_TerrainFarcasterDeltaServitus.desiredProportions.Clear();
+            GenStep_TerrainFarcasterDeltaServitus.totalExtant = 0;
             map.regionAndRoomUpdater.Enabled = true;
 
             // Plant gen ends here
@@ -291,10 +300,10 @@ namespace GatesToTheUniverse
         private float PlantChoiceWeight(ThingDef def, Map map)
         {
             float num = biome1.CommonalityOfPlant(def);
-            if (GenStep_TerrainFarcaster.totalExtant > 100)
+            if (GenStep_TerrainFarcasterDeltaServitus.totalExtant > 100)
             {
-                float num2 = (float)GenStep_TerrainFarcaster.numExtant[def] / (float)GenStep_TerrainFarcaster.totalExtant;
-                if (num2 < GenStep_TerrainFarcaster.desiredProportions[def] * 0.8f)
+                float num2 = (float)GenStep_TerrainFarcasterDeltaServitus.numExtant[def] / (float)GenStep_TerrainFarcasterDeltaServitus.totalExtant;
+                if (num2 < GenStep_TerrainFarcasterDeltaServitus.desiredProportions[def] * 0.8f)
                 {
                     num *= 4f;
                 }
@@ -304,9 +313,9 @@ namespace GatesToTheUniverse
 
         private static void RecordAdded(ThingDef plantDef)
         {
-            GenStep_TerrainFarcaster.totalExtant++;
+            GenStep_TerrainFarcasterDeltaServitus.totalExtant++;
             Dictionary<ThingDef, int> dictionary;
-            (dictionary = GenStep_TerrainFarcaster.numExtant)[plantDef] = dictionary[plantDef] + 1;
+            (dictionary = GenStep_TerrainFarcasterDeltaServitus.numExtant)[plantDef] = dictionary[plantDef] + 1;
         }
 
         public TerrainDef TerrainFrom(IntVec3 c, Map map, float elevation, float fertility, bool preferSolid)
@@ -349,8 +358,7 @@ namespace GatesToTheUniverse
             }*/
             if (elevation >= 0.61f)
             {
-                TerrainDef theNiceRocks = DefDatabase<TerrainDef>.GetNamed("GU_RedQuartzBase", true);
-                return theNiceRocks;
+                return theBaseRocks;
                // return GenStep_RocksFromGrid.RockDefAt(c).naturalTerrain;
             }
 
@@ -363,7 +371,7 @@ namespace GatesToTheUniverse
             {
                 return terrainDef2;
             }
-            if (!GenStep_TerrainFarcaster.debug_WarnedMissingTerrain)
+            if (!GenStep_TerrainFarcasterDeltaServitus.debug_WarnedMissingTerrain)
             {
                 Log.Error(string.Concat(new object[]
                 {
@@ -374,7 +382,7 @@ namespace GatesToTheUniverse
                     ", fertility=",
                     fertility
                 }));
-                GenStep_TerrainFarcaster.debug_WarnedMissingTerrain = true;
+                GenStep_TerrainFarcasterDeltaServitus.debug_WarnedMissingTerrain = true;
             }
             return TerrainDefOf.Sand;
         }
@@ -385,12 +393,9 @@ namespace GatesToTheUniverse
             ThingDef mineableThing = null;
             Log.Message(map.Biome.ToString());
 
-            if (biome1.ToString() == "GU_Alien1")
-            {
-                mineableThing = DefDatabase<ThingDef>.GetNamed("GU_ChunkRoseQuartz", true);
-            }
-            else { mineableThing = Find.World.NaturalRockTypesIn(map.Tile).RandomElement<ThingDef>().building.mineableThing; }
 
+            mineableThing = theRockChunks;
+            
             Rot4 random = Rot4.Random;
             MapGenFloatGrid elevation = MapGenerator.Elevation;
             IntVec3 intVec = root;
@@ -454,7 +459,7 @@ namespace GatesToTheUniverse
         }
 
 
-        public static ThingDef RockDefAt(IntVec3 c)
+        public ThingDef RockDefAt(IntVec3 c)
         {
             ThingDef thingDef = null;
             /*float num = -999999f;
@@ -472,7 +477,7 @@ namespace GatesToTheUniverse
                 Log.ErrorOnce("Did not get rock def to generate at " + c, 50812);
                 thingDef = ThingDefOf.Sandstone;
             }*/
-            thingDef = DefDatabase<ThingDef>.GetNamed("GU_RoseQuartz", true);
+            thingDef = theRocksThemselves;
             return thingDef;
         }
 

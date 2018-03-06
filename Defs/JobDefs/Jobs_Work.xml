@@ -4,7 +4,12 @@
 
   <!--============= Getting to Farcaster ===============-->
 
-
+  <JobDef>
+    <defName>GU_UseJuryRiggedFarcaster</defName>
+    <driverClass>GatesToTheUniverse.JobDriver_JuryRiggedFarcaster</driverClass>
+    <reportString>using farcaster.</reportString>
+  </JobDef>
+  
   <JobDef>
     <defName>GU_UseFarcaster</defName>
     <driverClass>GatesToTheUniverse.JobDriver_Farcaster</driverClass>

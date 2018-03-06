@@ -2,10 +2,10 @@
 <Defs>
 
   <BiomeDef>
-    <defName>GU_Alien1</defName>
-    <label>alien landscape</label>
-    <description>This strange planet orbits a red dwarf, and everything seems to be tinted in a sickly red colour.</description>
-    <workerClass>BiomeWorker_BorealForest</workerClass>
+    <defName>GU_SigmaAlcyonIIb</defName>
+    <label>alien landscape in Sigma Alcyon IIb</label>
+    <description>This strange moon's planet orbits a red dwarf, and everything seems to be tinted in a sickly red colour.</description>
+    <workerClass>BiomeWorker_Desert</workerClass>
     <animalDensity>1.9</animalDensity>
     <plantDensity>0.30</plantDensity>
     <factionBaseSelectionWeight>0.9</factionBaseSelectionWeight>
@@ -13,7 +13,7 @@
     <pathCost_summer>1750</pathCost_summer>
     <pathCost_fall>1750</pathCost_fall>
     <pathCost_winter>44000</pathCost_winter>
-    <texture>World/Biomes/BorealForest</texture>
+    <texture>UI/GU_ActivateSigmaAlcyon</texture>
     <soundsAmbient>
       <li>AmbientNightInsects_Standard</li>
     </soundsAmbient>
@@ -59,7 +59,66 @@
 			
 		</wildPlants>
 		<wildAnimals>
-			<Hare>1.00</Hare>
+			
+        </wildAnimals>
+  </BiomeDef>
+  
+  <BiomeDef>
+    <defName>GU_DeltaServitusIV</defName>
+    <label>alien landscape in Delta Servitus IV</label>
+    <description>This seems to be an artificial planetoid.</description>
+    <workerClass>BiomeWorker_Desert</workerClass>
+    <animalDensity>1.9</animalDensity>
+    <plantDensity>0.30</plantDensity>
+    <factionBaseSelectionWeight>0.9</factionBaseSelectionWeight>
+    <pathCost_spring>1750</pathCost_spring>
+    <pathCost_summer>1750</pathCost_summer>
+    <pathCost_fall>1750</pathCost_fall>
+    <pathCost_winter>44000</pathCost_winter>
+    <texture>UI/GU_ActivateSigmaAlcyon</texture>
+    <soundsAmbient>
+      <li>AmbientNightInsects_Standard</li>
+    </soundsAmbient>
+    
+    <terrainsByFertility>
+      <li>
+        <terrain>GU_MetalFloor1</terrain>
+        <min>-999</min>
+        <max>0.87</max>
+      </li>
+      <li>
+        <terrain>GU_MetalFloor2</terrain>
+        <min>0.87</min>
+        <max>999</max>
+      </li>
+    </terrainsByFertility>
+    <terrainPatchMakers>
+      <li>
+        <perlinFrequency>0.015</perlinFrequency>
+        <thresholds>
+          <li>
+            <terrain>GU_MetalFloor3</terrain>
+            <min>0.0</min>
+            <max>0.6</max>
+          </li>
+          <li>
+		    <terrain>GU_RedWaterShallow</terrain>
+		        <min>0.6</min>
+		        <max>1.06</max>
+		      </li>
+			  <li>
+            <terrain>GU_RedWaterDeep</terrain>
+            <min>1.06</min>
+            <max>999</max>
+          </li>
+        </thresholds>
+      </li>
+    </terrainPatchMakers>
+		<wildPlants>
+			
+			
+		</wildPlants>
+		<wildAnimals>
 			
     </wildAnimals>
   </BiomeDef>

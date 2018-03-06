@@ -124,10 +124,11 @@ namespace GatesToTheUniverse
             mapParent.Tile = TileFinder.RandomStartingTile();
             mapParent.SetFaction(Faction.OfPlayer);
             worldObjectFarcaster.mapHome = mapHome;
+            worldObjectFarcaster.mapGen = DefDatabase<MapGeneratorDef>.GetNamed("GU_FarcasterMapSigmaAlcyon", true);
             Find.WorldObjects.Add(mapParent);
             Map mymap = new Map();
             mymap = GetOrGenerateMapUtility.GetOrGenerateMap(mapParent.Tile, Find.World.info.initialMapSize, null);
-            mymap.TileInfo.biome = DefDatabase<BiomeDef>.GetNamed("GU_Alien1", true);
+            mymap.TileInfo.biome = DefDatabase<BiomeDef>.GetNamed("GU_SigmaAlcyonIIb", true);
             //Log.Message(mymap.Biome.ToString());
             mapParent.Tile = base.Tile;
 

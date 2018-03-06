@@ -11,6 +11,7 @@ namespace GatesToTheUniverse
     {
         public bool shouldBeDeleted;
         public Map mapHome;
+        public MapGeneratorDef mapGen;
 
 
         public IntVec3 holeLocation;
@@ -25,14 +26,14 @@ namespace GatesToTheUniverse
         }
 
 
-       /* public override MapGeneratorDef MapGeneratorDef
+        public override MapGeneratorDef MapGeneratorDef
         {
             get
             {
-               
-                return DefDatabase<MapGeneratorDef>.GetNamed("GU_FarcasterMap", true);
+
+                return mapGen;
             }
-        }*/
+        }
 
 
         public override bool ShouldRemoveMapNow(out bool alsoRemoveWorldObject)

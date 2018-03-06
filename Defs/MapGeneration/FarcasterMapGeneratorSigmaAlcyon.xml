@@ -10,14 +10,14 @@
 
 
   <GenStepDef>
-    <defName>GU_ElevationFertility</defName>
+    <defName>GU_ElevationFertilitySigmaAlcyon</defName>
     <linkWithMapGenerator>GU_FarcasterMapSigmaAlcyon</linkWithMapGenerator>
     <order>10</order>
     <genStep Class="GenStep_ElevationFertility"/>
   </GenStepDef>
   
   <GenStepDef>
-    <defName>GU_Caves</defName>
+    <defName>GU_CavesSigmaAlcyon</defName>
     <linkWithMapGenerator>GU_FarcasterMapSigmaAlcyon</linkWithMapGenerator>
     <order>11</order>
     <genStep Class="GenStep_Caves"/>
@@ -29,23 +29,23 @@
  
   
   <GenStepDef>
-    <defName>GU_Terrain</defName>
+    <defName>GU_TerrainSigmaAlcyon</defName>
     <linkWithMapGenerator>GU_FarcasterMapSigmaAlcyon</linkWithMapGenerator>
     <order>210</order>
-    <genStep Class="GatesToTheUniverse.GenStep_TerrainFarcaster"/>
+    <genStep Class="GatesToTheUniverse.GenStep_TerrainFarcasterSigmaAlcyon"/>
   </GenStepDef>
   
 
   
   <GenStepDef>
-    <defName>GU_FindPlayerStartSpot</defName>
+    <defName>GU_FindPlayerStartSpotSigmaAlcyon</defName>
     <linkWithMapGenerator>GU_FarcasterMapSigmaAlcyon</linkWithMapGenerator>
     <order>600</order>
     <genStep Class="GenStep_FindPlayerStartSpot"/>
   </GenStepDef>
   
   <GenStepDef>
-    <defName>GU_Fog</defName>
+    <defName>GU_FogSigmaAlcyon</defName>
     <linkWithMapGenerator>GU_FarcasterMapSigmaAlcyon</linkWithMapGenerator>
     <order>1500</order>
     <genStep Class="GenStep_Fog"/>
