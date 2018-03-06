@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Building_AncientFarcaster.cs" />
+    <Compile Include="Building_JuryRiggedFarcaster.cs" />
     <Compile Include="Building_Farcaster.cs" />
     <Compile Include="JobDriver_AncientFarcaster.cs" />
     <Compile Include="JobDriver_Farcaster.cs" />
