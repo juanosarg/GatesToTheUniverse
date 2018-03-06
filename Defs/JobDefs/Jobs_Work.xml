@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+  <!--============= Getting to Farcaster ===============-->
+
+
+  <JobDef>
+    <defName>GU_UseFarcaster</defName>
+    <driverClass>GatesToTheUniverse.JobDriver_Farcaster</driverClass>
+    <reportString>using farcaster.</reportString>
+  </JobDef>
+  
+  <JobDef>
+    <defName>GU_UseAncientFarcaster</defName>
+    <driverClass>GatesToTheUniverse.JobDriver_AncientFarcaster</driverClass>
+    <reportString>using farcaster.</reportString>
+  </JobDef>
+
+</Defs>

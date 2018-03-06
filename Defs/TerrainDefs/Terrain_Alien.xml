@@ -49,7 +49,7 @@
     <defName>GU_RedWaterShallow</defName>
     <label>red shallow water</label>
     <texturePath>Terrain/Surfaces/WaterShallowRamp</texturePath>
-	<color>(145,10,10)</color>
+	<color>(200,100,100)</color>
     <waterDepthShader>Map/WaterDepth</waterDepthShader>
     <edgeType>Water</edgeType>
     <renderPrecedence>394</renderPrecedence>
@@ -72,7 +72,7 @@
     <label>red deep water</label>
     <texturePath>Terrain/Surfaces/WaterDeepRamp</texturePath>
     <waterDepthShader>Map/WaterDepth</waterDepthShader>
-		<color>(145,10,10)</color>
+	<color>(200,100,100)</color>
 
     <edgeType>Water</edgeType>
     <renderPrecedence>395</renderPrecedence>
@@ -114,5 +114,27 @@
     <avoidWander>false</avoidWander>
   </TerrainDef>
   
+  <TerrainDef>
+    <defName>GU_RedQuartzBase</defName>
+    <label>rough red quartz</label>
+    <texturePath>Terrain/Surfaces/RoughStone</texturePath>
+	<color>(120,50,50)</color>
+    <edgeType>FadeRough</edgeType>
+    <renderPrecedence>315</renderPrecedence>
+    <pathCost>3</pathCost>
+    <statBases>
+      <Beauty>-1</Beauty>
+      <Cleanliness>-1</Cleanliness>
+    </statBases>
+    <terrainFilthDef>FilthDirt</terrainFilthDef>
+    <affordances>
+      <li>Light</li>
+      <li>Heavy</li>
 
+    </affordances>
+    <fertility>0</fertility>
+    <takeFootprints>false</takeFootprints>
+    <acceptFilth>true</acceptFilth>
+    <avoidWander>false</avoidWander>
+  </TerrainDef>
 </Defs>

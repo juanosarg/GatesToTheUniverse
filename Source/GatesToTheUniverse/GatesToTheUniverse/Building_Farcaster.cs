@@ -14,7 +14,11 @@ namespace GatesToTheUniverse
         
         private bool activatedBool = true;
         private bool confirmDeactivation = false;
-        private MapParent mapParent;
+        public MapParent mapParent;
+        public Map mapHome;
+        public IntVec3 locationFarcast;
+
+
 
         private Graphic GraphicactivatedBool;
 
@@ -42,6 +46,9 @@ namespace GatesToTheUniverse
             Scribe_Values.Look<bool>(ref this.activatedBool, "activatedBool", false, false);
             Scribe_Values.Look<bool>(ref this.confirmDeactivation, "confirmDeactivation", false, false);
             Scribe_References.Look<MapParent>(ref this.mapParent, "mapParent");
+            Scribe_References.Look<Map>(ref this.mapHome, "mapHome");
+            Scribe_Values.Look<IntVec3>(ref this.locationFarcast, "locationFarcast");
+
 
         }
 
@@ -55,8 +62,8 @@ namespace GatesToTheUniverse
 
              if (activatedBool) { 
                  Command_Action command_Action = new Command_Action();
-                 command_Action.defaultLabel = "Establish farcaster link";
-                 command_Action.defaultDesc = "Establish farcaster link";
+                 command_Action.defaultLabel = "GU_EstablishFarcasterLink".Translate();
+                 command_Action.defaultDesc = "GU_EstablishFarcasterLink".Translate();
                  command_Action.icon = ContentFinder<Texture2D>.Get("UI/Commands/AbandonHome", true);
                  command_Action.action = delegate
                  {
@@ -73,13 +80,13 @@ namespace GatesToTheUniverse
 
 
                          Command_Action command_Action2 = new Command_Action();
-                         command_Action2.defaultLabel = "Deactivate farcaster link";
-                         command_Action2.defaultDesc = "Deactivate farcaster link";
+                         command_Action2.defaultLabel = "GU_DeactivateFarcasterLink".Translate();
+                         command_Action2.defaultDesc = "GU_DeactivateFarcasterLink".Translate();
                          command_Action2.icon = ContentFinder<Texture2D>.Get("UI/Commands/Detonate", true);
                          command_Action2.action = delegate
                          {
                              confirmDeactivation = true;
-                             Messages.Message("Are you sure? Destination and everything in it will be lost forever. Click again to confirm", MessageTypeDefOf.PositiveEvent);
+                             Messages.Message("GU_FarcasterConfirmDeletion".Translate(), MessageTypeDefOf.PositiveEvent);
 
 
                          };
@@ -88,8 +95,8 @@ namespace GatesToTheUniverse
                 else
                  {
                          Command_Action command_Action3 = new Command_Action();
-                         command_Action3.defaultLabel = "Deactivate farcaster link (confirm)";
-                         command_Action3.defaultDesc = "Deactivate farcaster link (confirm)";
+                         command_Action3.defaultLabel = "GU_DeactivateFarcasterLinkConfirm".Translate();
+                         command_Action3.defaultDesc = "GU_DeactivateFarcasterLinkConfirm".Translate();
                          command_Action3.icon = ContentFinder<Texture2D>.Get("UI/Commands/Detonate", true);
                          command_Action3.action = delegate
                          {
@@ -109,23 +116,34 @@ namespace GatesToTheUniverse
 
         public void EstablishFarcasterLink()
         {
-            Messages.Message("Farcaster activated", MessageTypeDefOf.PositiveEvent);
-            mapParent = (MapParent)WorldObjectMaker.MakeWorldObject(DefDatabase<WorldObjectDef>.GetNamed("GU_FarcasterDestination", true));
+            mapHome = this.Map;
+            Messages.Message("GU_FarcasterActivated".Translate(), MessageTypeDefOf.PositiveEvent);
+            FarcasterDestination worldObjectFarcaster = (FarcasterDestination)WorldObjectMaker.MakeWorldObject(DefDatabase<WorldObjectDef>.GetNamed("GU_FarcasterDestination", true));
+            mapParent = (MapParent)worldObjectFarcaster;
             ///mapParent = (MapParent)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.FactionBase);
             mapParent.Tile = TileFinder.RandomStartingTile();
             mapParent.SetFaction(Faction.OfPlayer);
+            worldObjectFarcaster.mapHome = mapHome;
             Find.WorldObjects.Add(mapParent);
             Map mymap = new Map();
             mymap = GetOrGenerateMapUtility.GetOrGenerateMap(mapParent.Tile, Find.World.info.initialMapSize, null);
             mymap.TileInfo.biome = DefDatabase<BiomeDef>.GetNamed("GU_Alien1", true);
-            Log.Message(mymap.Biome.ToString());
-
-
-            //Map mymap = MapGenerator.GenerateMap(Find.World.info.initialMapSize, mapParent, mapParent.MapGeneratorDef, mapParent.ExtraGenStepDefs, null);
+            //Log.Message(mymap.Biome.ToString());
             mapParent.Tile = base.Tile;
-           
 
-      
+            Building_AncientFarcaster building_AncientFarcaster = (Building_AncientFarcaster)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("GU_AncientFarcasterPortal", true));
+            building_AncientFarcaster.mapHome = mapHome;
+            building_AncientFarcaster.locationHome = this.Position;
+            building_AncientFarcaster.SetFaction(Faction.OfPlayer);
+            GenSpawn.Spawn(building_AncientFarcaster, mymap.Center, mymap);
+            locationFarcast = building_AncientFarcaster.Position;
+
+            //Farcaster portal spawning ends here
+
+
+
+
+
 
 
 
@@ -135,23 +153,27 @@ namespace GatesToTheUniverse
 
         public void DeactivateFarcasterLink()
         {
-            Messages.Message("Farcaster deactivated", MessageTypeDefOf.PositiveEvent);
+            Messages.Message("GU_FarcasterDectivated".Translate(), MessageTypeDefOf.PositiveEvent);
             Find.WorldObjects.Remove(mapParent);
         }
 
         public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn myPawn)
         {
-            if (myPawn.RaceProps.Humanlike && base.Faction == Faction.OfPlayer)
+            if (myPawn.RaceProps.Humanlike && base.Faction == Faction.OfPlayer && !activatedBool)
             {
-
-                Action command_action_farcast = delegate
+                if (myPawn.CanReach(this, PathEndMode.InteractionCell, Danger.Some, false, TraverseMode.ByPawn))
                 {
+                    Action command_action_farcast = delegate
+                    {
+                        Job job = new Job(DefDatabase<JobDef>.GetNamed("GU_UseFarcaster", true), this);
+                        myPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                      
+                    };
+                    yield return FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption("GU_UseFarcaster".Translate(), command_action_farcast, MenuOptionPriority.Default, null, null, 0f, null, null), myPawn, this, "ReservedBy");
 
-                    myPawn.DeSpawn();
-                    GenSpawn.Spawn(myPawn, myPawn.Position, mapParent.Map);
-                };
-               
-            yield return FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption("Use farcaster", command_action_farcast, MenuOptionPriority.Default, null, null, 0f, null, null), myPawn, this, "ReservedBy");
+                }
+
+
 
             }
         }

@@ -6,7 +6,7 @@
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>GU_FarcasterPortal</defName>
-		<label>ancient farcaster portal</label>
+		<label>farcaster portal</label>
 		<thingClass>GatesToTheUniverse.Building_Farcaster</thingClass>
 		<description>Activate this!</description>
 		<graphicData>
@@ -56,7 +56,43 @@
 
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>GU_GatesToTheUniverseTab</designationCategory>
+	</ThingDef>
+	
+	
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>GU_AncientFarcasterPortal</defName>
+		<label>ancient farcaster portal</label>
+		<description>Allows you to return to your home Rimworld.</description>
+		
+		<thingClass>GatesToTheUniverse.Building_AncientFarcaster</thingClass>
+		<graphicData>
+			<texPath>Things/Building/GU_AncientRustedFarcaster</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,6)</drawSize>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>Standable</passability>
+		<fillPercent>0.7</fillPercent>
+		<canOverlapZones>true</canOverlapZones>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>4</glowRadius>
+				<glowColor>(255,0,0,0)</glowColor>
+			</li>
+		</comps>
+		<size>(3,6)</size>
+		<blockPlants>true</blockPlants>
+		
+		<building>
+			<deconstructible>false</deconstructible>
+		</building>
+		<destroyable>false</destroyable>
+		<useHitPoints>false</useHitPoints>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+
 	</ThingDef>
 
 

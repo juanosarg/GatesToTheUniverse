@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!--============================== More Furniture ==============================-->
+
+  <DesignationCategoryDef>
+    <defName>GU_GatesToTheUniverseTab</defName>
+    <label>Farcasters</label>
+    <description>Items added by Gates to the Universe.</description>
+    <order>450</order>
+    <specialDesignatorClasses>
+      <li>Designator_Cancel</li>
+      <li>Designator_Deconstruct</li>
+    </specialDesignatorClasses>
+  </DesignationCategoryDef>
+
+
+
+</Defs>

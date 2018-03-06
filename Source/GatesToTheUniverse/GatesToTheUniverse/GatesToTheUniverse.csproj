@@ -51,7 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Building_AncientFarcaster.cs" />
     <Compile Include="Building_Farcaster.cs" />
+    <Compile Include="JobDriver_AncientFarcaster.cs" />
+    <Compile Include="JobDriver_Farcaster.cs" />
     <Compile Include="GenStep_ElevationFertilityFarcaster.cs" />
     <Compile Include="GenStep_TerrainFarcaster.cs" />
     <Compile Include="FarcasterDestination.cs" />

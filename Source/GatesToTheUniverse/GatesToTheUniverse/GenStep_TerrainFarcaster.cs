@@ -80,7 +80,9 @@ namespace GatesToTheUniverse
                 current2.Cleanup();
             }
 
+
             //Basic terrain gen ends here
+
 
 
             if (map.TileInfo.WaterCovered)
@@ -110,7 +112,9 @@ namespace GatesToTheUniverse
                     if (caves[current] <= 0f)
                     {
                         ThingDef def = GenStep_TerrainFarcaster.RockDefAt(current);
-                        GenSpawn.Spawn(def, current, map);
+                        if (map.Center.DistanceTo(current) > 5f) { 
+                            GenSpawn.Spawn(def, current, map);
+                        }
                     }
                     for (int i = 0; i < list.Count; i++)
                     {
@@ -342,11 +346,13 @@ namespace GatesToTheUniverse
            /* if (elevation > 0.55f && elevation < 0.61f)
             {
                 return TerrainDefOf.Gravel;
-            }
+            }*/
             if (elevation >= 0.61f)
             {
-                return GenStep_RocksFromGrid.RockDefAt(c).naturalTerrain;
-            }*/
+                TerrainDef theNiceRocks = DefDatabase<TerrainDef>.GetNamed("GU_RedQuartzBase", true);
+                return theNiceRocks;
+               // return GenStep_RocksFromGrid.RockDefAt(c).naturalTerrain;
+            }
 
 
             

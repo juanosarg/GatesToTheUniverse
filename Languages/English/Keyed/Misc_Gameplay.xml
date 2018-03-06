@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <!-- Misc -->
+
+  <GU_FarcasterActivated>Farcaster activated</GU_FarcasterActivated>
+  <GU_FarcasterDectivated>Farcaster deactivated</GU_FarcasterDectivated>
+  <GU_UseFarcaster>Use farcaster</GU_UseFarcaster>
+  <GU_EstablishFarcasterLink>Establish farcaster link</GU_EstablishFarcasterLink>
+  <GU_DeactivateFarcasterLink>Deactivate farcaster link</GU_DeactivateFarcasterLink>
+  <GU_FarcasterConfirmDeletion>Are you sure? Destination and everything in it will be lost forever. Click again to confirm</GU_FarcasterConfirmDeletion>
+  <GU_DeactivateFarcasterLinkConfirm>Deactivate farcaster link (confirm)</GU_DeactivateFarcasterLinkConfirm>
+  
+ 
+
+</LanguageData>

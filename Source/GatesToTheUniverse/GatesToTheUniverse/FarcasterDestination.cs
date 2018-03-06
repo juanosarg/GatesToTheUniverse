@@ -10,6 +10,8 @@ namespace GatesToTheUniverse
     class FarcasterDestination : FactionBase
     {
         public bool shouldBeDeleted;
+        public Map mapHome;
+
 
         public IntVec3 holeLocation;
 
