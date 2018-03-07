@@ -16,6 +16,7 @@ namespace GatesToTheUniverse
         private bool confirmDeactivation = false;
         public MapParent mapParent;
         public Map mapHome;
+        public Map mapFarcast;
         public IntVec3 locationFarcast;
 
 
@@ -47,6 +48,7 @@ namespace GatesToTheUniverse
             Scribe_Values.Look<bool>(ref this.confirmDeactivation, "confirmDeactivation", false, false);
             Scribe_References.Look<MapParent>(ref this.mapParent, "mapParent");
             Scribe_References.Look<Map>(ref this.mapHome, "mapHome");
+            Scribe_References.Look<Map>(ref this.mapFarcast, "mapFarcast");
             Scribe_Values.Look<IntVec3>(ref this.locationFarcast, "locationFarcast");
 
 
@@ -145,6 +147,8 @@ namespace GatesToTheUniverse
             //Log.Message(mymap.Biome.ToString());
             mapParent.Tile = base.Tile;
 
+            mapFarcast = mymap;
+
             Building_AncientFarcaster building_AncientFarcaster = (Building_AncientFarcaster)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("GU_AncientFarcasterPortal", true));
             building_AncientFarcaster.mapHome = mapHome;
             building_AncientFarcaster.locationHome = this.Position;
@@ -169,21 +173,43 @@ namespace GatesToTheUniverse
         public void SendThingsByFarcast()
         {
 
+            CellRect rect = GenAdj.OccupiedRect(this.Position, this.Rotation, this.def.size);
+            rect = rect.ExpandedBy(4);
 
-
-           /* foreach (IntVec3 current in this.OccupiedRect().Cells)
+            foreach (IntVec3 current in rect.Cells)
             {
-                List<Thing> thingList = current.GetThingList(base.Map);
-                for (int i = 0; i < thingList.Count; i++)
+                Building edifice = current.GetEdifice(this.Map);
+                if (edifice!=null&&edifice.def.defName == "GU_FarcasterPad")
                 {
-                    if (thingList[i] is Pawn || (thingList[i] is ThingWithComps && !(thingList[i] is Building)))
+                    foreach (IntVec3 current2 in edifice.OccupiedRect().Cells)
                     {
-                        Thing expr_90 = thingList[i];
-                        expr_90.DeSpawn();
-                        GenSpawn.Spawn(expr_90, current, this.connectedMap);
+                        List<Thing> thingList = current2.GetThingList(this.Map);
+                        for (int i = 0; i < thingList.Count; i++)
+                        {
+                            if (thingList[i] is Pawn || (thingList[i] is ThingWithComps && !(thingList[i] is Building)))
+                            {
+                                Thing thingToSend = thingList[i];
+                                thingToSend.DeSpawn();
+                                GenSpawn.Spawn(thingToSend, Map.Center, mapFarcast);
+                            }
+                        }
                     }
                 }
-            }*/
+            }
+
+            /*foreach (IntVec3 current in this.OccupiedRect().Cells)
+             {
+                 List<Thing> thingList = current.GetThingList(base.Map);
+                 for (int i = 0; i < thingList.Count; i++)
+                 {
+                     if (thingList[i] is Pawn || (thingList[i] is ThingWithComps && !(thingList[i] is Building)))
+                     {
+                         Thing expr_90 = thingList[i];
+                         expr_90.DeSpawn();
+                         GenSpawn.Spawn(expr_90, current, mapFarcast);
+                     }
+                 }
+             }*/
 
         }
 
