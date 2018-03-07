@@ -215,6 +215,30 @@
 		</products>
 	</RecipeDef>
 
+ <!-- ================ Ancient Metals ================ -->
 
+   <ThingDef ParentName="GU_RockBase">
+  
 
+    <defName>GU_AncientMetals</defName>
+    <label>ancient metal walls</label>
+	<generateCommonality>0</generateCommonality>
+    <description>These ancient metal walls have been here for a while.</description>
+    <graphicData>
+      <texPath>Things/Building/Linked/AncientMetals_Atlas</texPath>
+      
+    </graphicData>
+    <statBases>
+	  <Flammability>0</Flammability>
+      <Beauty>-2</Beauty>
+      <MaxHitPoints>400</MaxHitPoints>
+    </statBases>
+    <building>
+      <mineableThing>ChunkSlagSteel</mineableThing>
+      <mineableDropChance>0.25</mineableDropChance>
+	  <mineableYieldWasteable>false</mineableYieldWasteable>
+
+    </building>
+  </ThingDef>
+ 
 </Defs>

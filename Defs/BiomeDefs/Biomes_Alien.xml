@@ -102,15 +102,15 @@
             <max>0.6</max>
           </li>
           <li>
-		    <terrain>GU_RedWaterShallow</terrain>
+		    <terrain>GU_MetalFloor4</terrain>
 		        <min>0.6</min>
-		        <max>1.06</max>
+		        <max>999</max>
 		      </li>
-			  <li>
+			  <!--<li>
             <terrain>GU_RedWaterDeep</terrain>
             <min>1.06</min>
             <max>999</max>
-          </li>
+          </li>-->
         </thresholds>
       </li>
     </terrainPatchMakers>
@@ -119,7 +119,8 @@
 			
 		</wildPlants>
 		<wildAnimals>
-			
+			<Centipede>0.01</Centipede>
+
     </wildAnimals>
   </BiomeDef>
 

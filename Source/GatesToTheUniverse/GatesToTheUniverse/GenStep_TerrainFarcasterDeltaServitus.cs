@@ -5,6 +5,7 @@ using Verse.Noise;
 using Verse;
 using System.Linq;
 using UnityEngine;
+using Verse.AI.Group;
 
 
 namespace GatesToTheUniverse
@@ -27,30 +28,24 @@ namespace GatesToTheUniverse
         TerrainDef theBaseRocks;
         ThingDef theRockChunks;
         ThingDef theRocksThemselves;
+        ThingDef rockRubble;
 
 
 
 
         public BiomeDef chooseABiome()
         {
-            theBaseRocks = DefDatabase<TerrainDef>.GetNamed("GU_RedQuartzBase", true);
-            theRockChunks = DefDatabase<ThingDef>.GetNamed("GU_ChunkRoseQuartz", true);
-            theRocksThemselves=DefDatabase<ThingDef>.GetNamed("GU_RoseQuartz", true);
+            theBaseRocks = DefDatabase<TerrainDef>.GetNamed("GU_Piping", true);
+            theRockChunks = DefDatabase<ThingDef>.GetNamed("ChunkSlagSteel", true);
+            theRocksThemselves=DefDatabase<ThingDef>.GetNamed("GU_AncientMetals", true);
+            rockRubble= DefDatabase<ThingDef>.GetNamed("FilthAsh", true);
+
+            /*theBaseRocks = DefDatabase<TerrainDef>.GetNamed("GU_AncientMetals", true);
+            theRockChunks = DefDatabase<ThingDef>.GetNamed("ChunkSlagSteel", true);
+            theRocksThemselves=DefDatabase<ThingDef>.GetNamed("GU_RoseQuartz", true);*/
 
             return DefDatabase<BiomeDef>.GetNamed("GU_DeltaServitusIV", true);
 
-            /*int randomNumber = rand.Next(1, 3);
-            if (randomNumber == 1)
-            {
-                return DefDatabase<BiomeDef>.GetNamed("GU_Alien1", true);
-
-            }
-            else if (randomNumber == 2)
-            {
-                return DefDatabase<BiomeDef>.GetNamed("GU_Alien1", true);
-
-            }
-            else return null;*/
         }
 
         public override void Generate(Map map)
@@ -239,14 +234,14 @@ namespace GatesToTheUniverse
             map.regionAndRoomUpdater.Enabled = true;
 
             // Plant gen ends here
-
+            
             int num7 = 0;
             while (!map.wildSpawner.AnimalEcosystemFull)
             {
                 num7++;
-                if (num7 >= 10000)
+                if (num7 >= 10)
                 {
-                    Log.Error("Too many iterations.");
+                    //Log.Error("Too many iterations.");
                     break;
                 }
                 IntVec3 loc = RCellFinder.RandomAnimalSpawnCell_MapGen(map);
@@ -290,8 +285,32 @@ namespace GatesToTheUniverse
             for (int i = 0; i < randomInRange; i++)
             {
                 IntVec3 loc2 = CellFinder.RandomClosewalkCellNear(loc, map, radius, null);
-                Pawn newThing = PawnGenerator.GeneratePawn(pawnKindDef, null);
-                GenSpawn.Spawn(newThing, loc2, map);
+                Faction faction = FactionUtility.DefaultFactionFrom(pawnKindDef.defaultFactionType);
+
+                //Pawn newThing = PawnGenerator.GeneratePawn(pawnKindDef, faction);
+
+                Pawn newPawn = PawnGenerator.GeneratePawn(pawnKindDef, faction);
+                GenSpawn.Spawn(newPawn, loc2, map);
+                if (faction != null && faction != Faction.OfPlayer)
+                {
+                    Lord lord = null;
+
+                    LordJob_DefendPoint lordJob = new LordJob_DefendPoint(newPawn.Position);
+                    lord = LordMaker.MakeNewLord(faction, lordJob, newPawn.Map, null);
+                   /* if (newPawn.Map.mapPawns.SpawnedPawnsInFaction(faction).Any((Pawn p) => p != newPawn))
+                    {
+                        Pawn p2 = (Pawn)GenClosest.ClosestThing_Global(newPawn.Position, newPawn.Map.mapPawns.SpawnedPawnsInFaction(faction), 99999f, (Thing p) => p != newPawn && ((Pawn)p).GetLord() != null, null);
+                        lord = p2.GetLord();
+                    }
+                    if (lord == null)
+                    {
+                       
+                    }*/
+                    lord.AddPawn(newPawn);
+                }
+
+
+                //GenSpawn.Spawn(newThing, loc2, map);
             }
             return true;
         }
@@ -363,8 +382,6 @@ namespace GatesToTheUniverse
             }
 
 
-            
-            //terrainDef2 = TerrainThreshold.TerrainAtValue(map.Biome.terrainsByFertility, fertility);
             terrainDef2 = TerrainThreshold.TerrainAtValue(biome1.terrainsByFertility, fertility);
 
             if (terrainDef2 != null)
@@ -389,9 +406,9 @@ namespace GatesToTheUniverse
 
         private void GrowLowRockFormationFrom(IntVec3 root, Map map)
         {
-            ThingDef rockRubble = ThingDefOf.RockRubble;
+            
             ThingDef mineableThing = null;
-            Log.Message(map.Biome.ToString());
+           // Log.Message(map.Biome.ToString());
 
 
             mineableThing = theRockChunks;

@@ -3,24 +3,21 @@
 
   <TerrainDef>
     <defName>GU_MetalFloor1</defName>
-    <label>seamless polymer flooring</label>
-    <texturePath>Terrain/Surfaces/GU_MetalFloor1</texturePath>
+    <label>polymer flooring</label>
+    <texturePath>Terrain/Surfaces/PavedTile</texturePath>
     <edgeType>FadeRough</edgeType>
-	<color>(30,30,30)</color>
+	<color>(100,100,100)</color>
 
     <renderPrecedence>350</renderPrecedence>
-    <pathCost>4</pathCost>
     <statBases>
       <Beauty>-1</Beauty>
       <Cleanliness>-1</Cleanliness>
     </statBases>
-    <scatterType>SoftDry</scatterType>
     <affordances>
       <li>Light</li>
       <li>Heavy</li>
   
     </affordances>
-    <terrainFilthDef>FilthSand</terrainFilthDef>
     <fertility>0</fertility>
     <takeFootprints>false</takeFootprints>
   </TerrainDef>
@@ -30,44 +27,80 @@
     <label>metallic floor</label>
     <texturePath>Terrain/Surfaces/GU_MetalFloor2</texturePath>
     <edgeType>FadeRough</edgeType>
-	<color>(30,30,30)</color>
+	<color>(100,100,100)</color>
     <renderPrecedence>350</renderPrecedence>
-    <pathCost>4</pathCost>
     <statBases>
       <Beauty>-1</Beauty>
       <Cleanliness>-1</Cleanliness>
     </statBases>
-    <scatterType>SoftDry</scatterType>
     <affordances>
       <li>Light</li>
       <li>Heavy</li>
   
     </affordances>
-    <terrainFilthDef>FilthSand</terrainFilthDef>
     <fertility>0</fertility>
     <takeFootprints>false</takeFootprints>
   </TerrainDef>
   
   <TerrainDef>
     <defName>GU_MetalFloor3</defName>
-    <label>more metallic floor</label>
-    <texturePath>Terrain/Surfaces/GU_MetalFloor3</texturePath>
-		<color>(30,30,30)</color>
+    <label>seamless metallic floor</label>
+    <texturePath>Terrain/Surfaces/GU_MetalFloor1</texturePath>
+		<color>(100,100,100)</color>
 
     <edgeType>FadeRough</edgeType>
     <renderPrecedence>350</renderPrecedence>
-    <pathCost>4</pathCost>
     <statBases>
       <Beauty>-1</Beauty>
       <Cleanliness>-1</Cleanliness>
     </statBases>
-    <scatterType>SoftDry</scatterType>
     <affordances>
       <li>Light</li>
       <li>Heavy</li>
   
     </affordances>
-    <terrainFilthDef>FilthSand</terrainFilthDef>
+    <fertility>0</fertility>
+    <takeFootprints>false</takeFootprints>
+  </TerrainDef>
+  
+  <TerrainDef>
+    <defName>GU_MetalFloor4</defName>
+    <label>sun-bleached seamless metallic floor</label>
+    <texturePath>Terrain/Surfaces/GU_MetalFloor1</texturePath>
+		<color>(120,120,120)</color>
+
+    <edgeType>FadeRough</edgeType>
+    <renderPrecedence>350</renderPrecedence>
+    <statBases>
+      <Beauty>-1</Beauty>
+      <Cleanliness>-1</Cleanliness>
+    </statBases>
+    <affordances>
+      <li>Light</li>
+      <li>Heavy</li>
+  
+    </affordances>
+    <fertility>0</fertility>
+    <takeFootprints>false</takeFootprints>
+  </TerrainDef>
+  
+    <TerrainDef>
+    <defName>GU_Piping</defName>
+    <label>uncovered metallic pipes</label>
+    <texturePath>Terrain/Surfaces/GU_Piping</texturePath>
+		
+    <edgeType>FadeRough</edgeType>
+    <renderPrecedence>350</renderPrecedence>
+    <pathCost>8</pathCost>
+    <statBases>
+      <Beauty>-1</Beauty>
+      <Cleanliness>-1</Cleanliness>
+    </statBases>
+    <affordances>
+      <li>Light</li>
+      <li>Heavy</li>
+  
+    </affordances>
     <fertility>0</fertility>
     <takeFootprints>false</takeFootprints>
   </TerrainDef>

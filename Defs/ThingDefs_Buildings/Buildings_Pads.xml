@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>GU_FarcasterPad</defName>
+		<label>basic farcaster pad</label>
+		<thingClass>Building_Storage</thingClass>
+		<description>This landing pad can be built adjacent to a Farcaster, and allows colonists to send and receive goods.</description>
+		<graphicData>
+			<texPath>Things/Building/GU_FarcasterPad</texPath>
+			<graphicClass>Graphic_Single</graphicClass>    
+			<drawSize>(2,2)</drawSize>	
+			
+		</graphicData>
+		<inspectorTabs>
+			<li>ITab_Storage</li>
+		</inspectorTabs>
+		<costList>
+			<Steel>200</Steel>
+			<Component>2</Component>
+
+		</costList>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<WorkToBuild>1500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-8</Beauty>
+		</statBases>
+		<size>(2,2)</size>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<passability>Standable</passability>
+		<blockWind>true</blockWind>   
+		<hasInteractionCell>False</hasInteractionCell>
+		<rotatable>false</rotatable>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <canOverlapZones>false</canOverlapZones>
+    <neverMultiSelect>true</neverMultiSelect>
+
+
+		<placeWorkers>
+			<li>GatesToTheUniverse.PlaceWorker_NextToFarcaster</li>
+		</placeWorkers>
+		<comps>
+
+
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<designationCategory>GU_GatesToTheUniverseTab</designationCategory>
+		<researchPrerequisites><li>GR_BasicFarcasterResearch</li></researchPrerequisites>
+
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>GU_AncientFarcasterPad</defName>
+		<label>basic farcaster pad</label>
+		<thingClass>Building_Storage</thingClass>
+		<description>This landing pad allows colonists to send and receive goods.</description>
+		<graphicData>
+			<texPath>Things/Building/GU_FarcasterPad</texPath>
+			<graphicClass>Graphic_Single</graphicClass>    
+			<drawSize>(2,2)</drawSize>	
+			
+		</graphicData>
+		<inspectorTabs>
+			<li>ITab_Storage</li>
+		</inspectorTabs>
+		
+		
+		<size>(2,2)</size>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<passability>Standable</passability>
+		<blockWind>true</blockWind>   
+		<hasInteractionCell>False</hasInteractionCell>
+		<rotatable>false</rotatable>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <canOverlapZones>false</canOverlapZones>
+    <neverMultiSelect>true</neverMultiSelect>
+
+	<building>
+
+			<deconstructible>false</deconstructible>
+		</building>
+		<destroyable>false</destroyable>
+		<useHitPoints>false</useHitPoints>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<designationCategory>GU_GatesToTheUniverseTab</designationCategory>
+		<researchPrerequisites><li>GR_BasicFarcasterResearch</li></researchPrerequisites>
+
+	</ThingDef>
+
+
+
+
+
+</Defs>

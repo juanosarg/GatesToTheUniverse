@@ -10,7 +10,12 @@
   <GU_DeactivateFarcasterLink>Deactivate farcaster link</GU_DeactivateFarcasterLink>
   <GU_FarcasterConfirmDeletion>Are you sure? Destination and everything in it will be lost forever. Click again to confirm</GU_FarcasterConfirmDeletion>
   <GU_DeactivateFarcasterLinkConfirm>Deactivate farcaster link (confirm)</GU_DeactivateFarcasterLinkConfirm>
+  <GU_SendThingsToFarcastLocation>Send things</GU_SendThingsToFarcastLocation>
+  <GU_SendThingsToFarcastLocationDesc>Send all things in an adjacent Farcaster Pad to the remote location</GU_SendThingsToFarcastLocationDesc>
+
+
   
- 
+  <GU_PlaceNextToFarcaster>The pad must be built adjacent to a Farcaster portal</GU_PlaceNextToFarcaster>
+
 
 </LanguageData>

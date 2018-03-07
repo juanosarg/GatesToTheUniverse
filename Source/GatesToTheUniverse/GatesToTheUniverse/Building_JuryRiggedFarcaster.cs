@@ -109,8 +109,21 @@ namespace GatesToTheUniverse
             }
 
 
+            if (!activatedBool)
+            {
+                Command_Action command_Action4 = new Command_Action();
+                command_Action4.defaultLabel = "GU_SendThingsToFarcastLocation".Translate();
+                command_Action4.defaultDesc = "GU_SendThingsToFarcastLocationDesc".Translate();
+                command_Action4.icon = ContentFinder<Texture2D>.Get("UI/Commands/SelectNextTransporter", true);
+                command_Action4.action = delegate
+                {
+                    SendThingsByFarcast();
 
-            
+                };
+                yield return command_Action4;
+
+            }
+
 
         }
 
@@ -139,16 +152,11 @@ namespace GatesToTheUniverse
             GenSpawn.Spawn(building_AncientFarcaster, mymap.Center, mymap);
             locationFarcast = building_AncientFarcaster.Position;
 
+            Building_Storage building_AncientPad = (Building_Storage)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("GU_AncientFarcasterPad", true));
+            building_AncientPad.SetFaction(Faction.OfPlayer);
+            GenSpawn.Spawn(building_AncientPad, mymap.Center- GenAdj.CardinalDirections[0]*4, mymap);
+
             //Farcaster portal spawning ends here
-
-
-
-
-
-
-
-
-
 
         }
 
@@ -156,6 +164,27 @@ namespace GatesToTheUniverse
         {
             Messages.Message("GU_FarcasterDectivated".Translate(), MessageTypeDefOf.PositiveEvent);
             Find.WorldObjects.Remove(mapParent);
+        }
+
+        public void SendThingsByFarcast()
+        {
+
+
+
+           /* foreach (IntVec3 current in this.OccupiedRect().Cells)
+            {
+                List<Thing> thingList = current.GetThingList(base.Map);
+                for (int i = 0; i < thingList.Count; i++)
+                {
+                    if (thingList[i] is Pawn || (thingList[i] is ThingWithComps && !(thingList[i] is Building)))
+                    {
+                        Thing expr_90 = thingList[i];
+                        expr_90.DeSpawn();
+                        GenSpawn.Spawn(expr_90, current, this.connectedMap);
+                    }
+                }
+            }*/
+
         }
 
         public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn myPawn)

@@ -240,7 +240,7 @@ namespace GatesToTheUniverse
 
             // Plant gen ends here
 
-            int num7 = 0;
+            /*int num7 = 0;
             while (!map.wildSpawner.AnimalEcosystemFull)
             {
                 num7++;
@@ -250,11 +250,14 @@ namespace GatesToTheUniverse
                     break;
                 }
                 IntVec3 loc = RCellFinder.RandomAnimalSpawnCell_MapGen(map);
+
                 if (!SpawnRandomWildAnimalAt(map,loc))
                 {
                     break;
                 }
-            }
+            }*/
+
+            // Animal gen removed
 
             if (map.TileInfo.WaterCovered)
             {
@@ -391,7 +394,7 @@ namespace GatesToTheUniverse
         {
             ThingDef rockRubble = ThingDefOf.RockRubble;
             ThingDef mineableThing = null;
-            Log.Message(map.Biome.ToString());
+           // Log.Message(map.Biome.ToString());
 
 
             mineableThing = theRockChunks;

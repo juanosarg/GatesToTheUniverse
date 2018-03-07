@@ -64,7 +64,7 @@ namespace GatesToTheUniverse
                  Command_Action command_Action = new Command_Action();
                  command_Action.defaultLabel = "GU_EstablishFarcasterLink".Translate();
                  command_Action.defaultDesc = "GU_EstablishFarcasterLink".Translate();
-                 command_Action.icon = ContentFinder<Texture2D>.Get("UI/Commands/AbandonHome", true);
+                 command_Action.icon = ContentFinder<Texture2D>.Get("UI/GU_ActivateDeltaServitus", true);
                  command_Action.action = delegate
                  {
                      EstablishFarcasterLink();
@@ -82,7 +82,7 @@ namespace GatesToTheUniverse
                          Command_Action command_Action2 = new Command_Action();
                          command_Action2.defaultLabel = "GU_DeactivateFarcasterLink".Translate();
                          command_Action2.defaultDesc = "GU_DeactivateFarcasterLink".Translate();
-                         command_Action2.icon = ContentFinder<Texture2D>.Get("UI/Commands/Detonate", true);
+                         command_Action2.icon = ContentFinder<Texture2D>.Get("UI/GU_DeactivateDeltaServitus", true);
                          command_Action2.action = delegate
                          {
                              confirmDeactivation = true;
@@ -97,7 +97,7 @@ namespace GatesToTheUniverse
                          Command_Action command_Action3 = new Command_Action();
                          command_Action3.defaultLabel = "GU_DeactivateFarcasterLinkConfirm".Translate();
                          command_Action3.defaultDesc = "GU_DeactivateFarcasterLinkConfirm".Translate();
-                         command_Action3.icon = ContentFinder<Texture2D>.Get("UI/Commands/Detonate", true);
+                         command_Action3.icon = ContentFinder<Texture2D>.Get("UI/GU_DeactivateDeltaServitus", true);
                          command_Action3.action = delegate
                          {
                              activatedBool = true;
