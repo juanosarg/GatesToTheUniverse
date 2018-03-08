@@ -17,10 +17,36 @@
     <useHitPoints>false</useHitPoints>
     <resourceReadoutAlwaysShow>true</resourceReadoutAlwaysShow>
     <statBases>
+      <MarketValue>0.1</MarketValue>
+      <Mass>0.007</Mass>
+      
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <stackLimit>75</stackLimit>
+    
+  </ThingDef>
+  
+   <ThingDef ParentName="ResourceBase">
+    <defName>GU_RedMineralIngot</defName>
+    <label>alcyonite ingots</label>
+    <description>Alcyonite is a very rare variation of the almandite gemstone. Really strong, able to easily cut steel, yet malleable and an excekkent conductor of electricity.</description>
+    <graphicData>
+      <texPath>Things/Item/GU_RedMineralIngot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<tradeability>Sellable</tradeability>
+    <resourceReadoutPriority>First</resourceReadoutPriority>
+    <soundInteract>Silver_Drop</soundInteract>
+    <soundDrop>Silver_Drop</soundDrop>
+    <useHitPoints>false</useHitPoints>
+    <resourceReadoutAlwaysShow>true</resourceReadoutAlwaysShow>
+    <statBases>
       <MarketValue>1</MarketValue>
       <Mass>0.007</Mass>
-      <SharpDamageMultiplier>0.5</SharpDamageMultiplier>
-      <BluntDamageMultiplier>1.1</BluntDamageMultiplier>
+      <SharpDamageMultiplier>1.3</SharpDamageMultiplier>
+      <BluntDamageMultiplier>1.3</BluntDamageMultiplier>
     </statBases>
     <thingCategories>
       <li>ResourcesRaw</li>
@@ -37,13 +63,17 @@
       <soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
       <soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
       <statOffsets>
-        <Beauty>6</Beauty>
+        <Beauty>7</Beauty>
       </statOffsets>
       <statFactors>
-        <MaxHitPoints>0.7</MaxHitPoints>
-        <Flammability>0.2</Flammability>
-        <Beauty>2</Beauty>
-        <MeleeWeapon_CooldownMultiplier>1</MeleeWeapon_CooldownMultiplier>
+        <MaxHitPoints>3</MaxHitPoints>
+        <Flammability>0.1</Flammability>
+        <Beauty>2.2</Beauty>
+		<WorkToMake>1.9</WorkToMake>
+		<WorkToBuild>1.9</WorkToBuild>
+		        <DoorOpenSpeed>0.75</DoorOpenSpeed>
+
+        <MeleeWeapon_CooldownMultiplier>1.4</MeleeWeapon_CooldownMultiplier>
       </statFactors>
       <smeltable>true</smeltable>
     </stuffProps>

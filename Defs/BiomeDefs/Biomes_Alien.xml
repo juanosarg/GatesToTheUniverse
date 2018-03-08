@@ -53,7 +53,9 @@
     </terrainPatchMakers>
 		<wildPlants>
 			<GU_AlienTree>60</GU_AlienTree>
-			<GU_AlienGrass>200</GU_AlienGrass>
+			<GU_AlienGrass>50</GU_AlienGrass>
+			<GU_RedLeaves>50</GU_RedLeaves>
+			<GU_RedLeaves2>50</GU_RedLeaves2>
 
 			
 		</wildPlants>

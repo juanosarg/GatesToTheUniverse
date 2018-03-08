@@ -31,12 +31,72 @@
 			<reproduceMtbDays>3</reproduceMtbDays>
 		</plant>
 	</ThingDef>
+	
+	<ThingDef ParentName="PlantBase">
+		<defName>GU_RedLeaves</defName>
+		<label>alien plant</label>
+		<description>Wild grass. Grows anywhere there is a little light and minimally fertile ground.</description>
+		<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Plants/GU_RedLeaves</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<hideAtSnowDepth>0.5</hideAtSnowDepth>
+		<ingestible>
+			<nutrition>0.18</nutrition>
+		</ingestible>
+		<plant>
+			<fertilityMin>0.05</fertilityMin>
+			<fertilitySensitivity>0.1</fertilitySensitivity>
+			<growDays>2.5</growDays>
+			<harvestWork>40</harvestWork>
+			<maxMeshCount>1</maxMeshCount>
+			<visualSizeRange>
+				<min>1</min>
+				<max>1.6</max>
+			</visualSizeRange>
+			<topWindExposure>0.4</topWindExposure>
+			<reproduceMtbDays>3</reproduceMtbDays>
+		</plant>
+	</ThingDef>
+	
+	<ThingDef ParentName="PlantBase">
+		<defName>GU_RedLeaves2</defName>
+		<label>alien plant</label>
+		<description>Wild grass. Grows anywhere there is a little light and minimally fertile ground.</description>
+		<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Plants/GU_RedLeaves2</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<hideAtSnowDepth>0.5</hideAtSnowDepth>
+		<ingestible>
+			<nutrition>0.18</nutrition>
+		</ingestible>
+		<plant>
+			<fertilityMin>0.05</fertilityMin>
+			<fertilitySensitivity>0.1</fertilitySensitivity>
+			<growDays>2.5</growDays>
+			<harvestWork>40</harvestWork>
+			<maxMeshCount>1</maxMeshCount>
+			<visualSizeRange>
+				<min>1</min>
+				<max>1.6</max>
+			</visualSizeRange>
+			<topWindExposure>0.4</topWindExposure>
+			<reproduceMtbDays>3</reproduceMtbDays>
+		</plant>
+	</ThingDef>
 	<!--============================ Trees ============================-->
 
   <ThingDef ParentName="PlantBase">
     <defName>GU_AlienTree</defName>
     <label>alien tree</label>
-    <description>This thing is weird.</description>
+    <description>This thing is weird. Are those eyes? They seem to be fruit, but...</description>
     <statBases>
       <MaxHitPoints>200</MaxHitPoints>
     </statBases>
