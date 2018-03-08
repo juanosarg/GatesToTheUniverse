@@ -27,6 +27,7 @@ namespace GatesToTheUniverse
         TerrainDef theBaseRocks;
         ThingDef theRockChunks;
         ThingDef theRocksThemselves;
+        ThingDef theMinerals;
 
 
 
@@ -36,6 +37,8 @@ namespace GatesToTheUniverse
             theBaseRocks = DefDatabase<TerrainDef>.GetNamed("GU_RedQuartzBase", true);
             theRockChunks = DefDatabase<ThingDef>.GetNamed("GU_ChunkRoseQuartz", true);
             theRocksThemselves=DefDatabase<ThingDef>.GetNamed("GU_RoseQuartz", true);
+            theMinerals = DefDatabase<ThingDef>.GetNamed("GU_MineableRedMineral", true);
+
 
             return DefDatabase<BiomeDef>.GetNamed("GU_SigmaAlcyonIIb", true);
 
@@ -159,27 +162,31 @@ namespace GatesToTheUniverse
                     }
                 }
             }
-            GenStep_ScatterLumpsMineable genStep_ScatterLumpsMineable = new GenStep_ScatterLumpsMineable();
-            float num3 = 10f;
+
+            //Here I modified the GenStep_ScatterLumpsMineable class so I can choose the minerals spawning
+
+            GenStep_ScatterLumpsMineableFarcaster genStep_ScatterLumpsMineable = new GenStep_ScatterLumpsMineableFarcaster();
+            float num3 = 1f;
             switch (Find.WorldGrid[map.Tile].hilliness)
             {
                 case Hilliness.Flat:
-                    num3 = 4f;
+                    num3 = 1f;
                     break;
                 case Hilliness.SmallHills:
-                    num3 = 8f;
+                    num3 = 3f;
                     break;
                 case Hilliness.LargeHills:
-                    num3 = 11f;
+                    num3 = 5f;
                     break;
                 case Hilliness.Mountainous:
-                    num3 = 15f;
+                    num3 = 7f;
                     break;
                 case Hilliness.Impassable:
-                    num3 = 16f;
+                    num3 = 8f;
                     break;
             }
             genStep_ScatterLumpsMineable.countPer10kCellsRange = new FloatRange(num3, num3);
+            genStep_ScatterLumpsMineable.forcedDefToScatter = theMinerals;
             genStep_ScatterLumpsMineable.Generate(map);
             map.regionAndRoomUpdater.Enabled = true;
 

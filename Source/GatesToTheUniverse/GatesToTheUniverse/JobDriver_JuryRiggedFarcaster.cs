@@ -30,6 +30,7 @@ namespace GatesToTheUniverse
                 pawn.DeSpawn();
                 GenSpawn.Spawn(pawn, building_Farcaster.locationFarcast, building_Farcaster.mapParent.Map);
                 FloodFillerFog.FloodUnfog(building_Farcaster.locationFarcast, building_Farcaster.mapParent.Map);
+                FarcasterStorylineController.sendFirstLetter();
 
             };
             yield return enterFarcaster;

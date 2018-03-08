@@ -13,7 +13,6 @@
     <pathCost_summer>1750</pathCost_summer>
     <pathCost_fall>1750</pathCost_fall>
     <pathCost_winter>44000</pathCost_winter>
-    <texture>UI/GU_ActivateSigmaAlcyon</texture>
     <soundsAmbient>
       <li>AmbientNightInsects_Standard</li>
     </soundsAmbient>
@@ -53,8 +52,8 @@
       </li>
     </terrainPatchMakers>
 		<wildPlants>
-			<GU_AlienTree>4.8</GU_AlienTree>
-			<GU_AlienGrass>7</GU_AlienGrass>
+			<GU_AlienTree>60</GU_AlienTree>
+			<GU_AlienGrass>200</GU_AlienGrass>
 
 			
 		</wildPlants>

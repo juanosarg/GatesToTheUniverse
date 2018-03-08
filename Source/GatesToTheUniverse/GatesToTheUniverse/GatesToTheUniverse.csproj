@@ -54,6 +54,8 @@
     <Compile Include="Building_AncientFarcaster.cs" />
     <Compile Include="Building_JuryRiggedFarcaster.cs" />
     <Compile Include="Building_Farcaster.cs" />
+    <Compile Include="FarcasterStorylineController.cs" />
+    <Compile Include="GenStep_ScatterLumpsMineableFarcaster.cs" />
     <Compile Include="PlaceWorker_NextToFarcaster.cs" />
     <Compile Include="GenStep_TerrainFarcasterDeltaServitus.cs" />
     <Compile Include="JobDriver_AncientFarcaster.cs" />

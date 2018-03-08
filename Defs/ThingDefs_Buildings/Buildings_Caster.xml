@@ -29,7 +29,8 @@
     <tickerType>Normal</tickerType>
 		<costList>
 			<Steel>200</Steel>
-			<Component>2</Component>
+			<Component>5</Component>
+			<GU_ContainedSingularity>1</GU_ContainedSingularity>
 
 		</costList>
 		<useHitPoints>True</useHitPoints>
@@ -136,12 +137,7 @@
 		<fillPercent>0.7</fillPercent>
 		<canOverlapZones>true</canOverlapZones>
 		<tickerType>Normal</tickerType>
-		<comps>
-			<li Class="CompProperties_Glower">
-				<glowRadius>4</glowRadius>
-				<glowColor>(255,0,0,0)</glowColor>
-			</li>
-		</comps>
+		
 		<size>(3,6)</size>
 		<blockPlants>true</blockPlants>
 		

@@ -172,7 +172,11 @@
       <Mass>1</Mass>
       <SharpDamageMultiplier>0.5</SharpDamageMultiplier>
     </statBases>
+	<tradeability>Sellable</tradeability>
+
     <stuffProps>
+	      <commonality>0</commonality>
+
       <color>(120,50,50)</color>
       <soundImpactStuff>BulletImpactGround</soundImpactStuff>
       <soundMeleeHitSharp>MeleeHit_Stone</soundMeleeHitSharp>

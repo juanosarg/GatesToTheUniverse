@@ -6,16 +6,23 @@
   <GU_FarcasterActivated>Farcaster activated</GU_FarcasterActivated>
   <GU_FarcasterDectivated>Farcaster deactivated</GU_FarcasterDectivated>
   <GU_UseFarcaster>Use farcaster</GU_UseFarcaster>
+  <GU_UseJuryRiggedFarcaster>Use jury-rigged farcaster</GU_UseJuryRiggedFarcaster>
   <GU_EstablishFarcasterLink>Establish farcaster link</GU_EstablishFarcasterLink>
+  <GU_EstablishFarcasterLinkSigmaAlcyonDesc>Establish farcaster link to an available farcaster at the Sigma Alcyon IIb moon</GU_EstablishFarcasterLinkSigmaAlcyonDesc>
   <GU_DeactivateFarcasterLink>Deactivate farcaster link</GU_DeactivateFarcasterLink>
+  <GU_DeactivateFarcasterLinkSigmaAlcyonDesc>Deactivate farcaster link to the Sigma Alcyon IIb moon</GU_DeactivateFarcasterLinkSigmaAlcyonDesc>
   <GU_FarcasterConfirmDeletion>Are you sure? Destination and everything in it will be lost forever. Click again to confirm</GU_FarcasterConfirmDeletion>
   <GU_DeactivateFarcasterLinkConfirm>Deactivate farcaster link (confirm)</GU_DeactivateFarcasterLinkConfirm>
   <GU_SendThingsToFarcastLocation>Send things</GU_SendThingsToFarcastLocation>
   <GU_SendThingsToFarcastLocationDesc>Send all things in an adjacent Farcaster Pad to the remote location</GU_SendThingsToFarcastLocationDesc>
-
-
   
   <GU_PlaceNextToFarcaster>The pad must be built adjacent to a Farcaster portal</GU_PlaceNextToFarcaster>
+
+  <!-- Letters -->
+  
+  <GU_FirstFarcastingLabel>Farcasting</GU_FirstFarcastingLabel>
+  <GU_FirstFarcastingLetter>With a feeling of awe, the first colonist crosses the farcaster portal, arriving at a strange, red-tinged landscape. A pale gas giant looms in the horizon, and a very dim Red Dwarf star can be seen high in the sky. Eerie trees dot the rolling hills, burdened with ripened fruits that look suspiciously similar to gouged eyeballs. The atmosphere seems to be breathable, and the temperature is neither too cold or too hot. All in all, this looks like a promising start to your exploration of the Universe.</GU_FirstFarcastingLetter>
+
 
 
 </LanguageData>

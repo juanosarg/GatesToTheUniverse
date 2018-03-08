@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+
+ 
+
+
+  <!--============================ Resource rocks ===============================-->
+  
+  
+  <ThingDef ParentName="RockBase">
+    <defName>GU_MineableRedMineral</defName>
+    <label>strange red mineral</label>
+    <graphicData>
+      <texPath>Things/Building/Linked/RockFlecked_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <color>(255,92,83)</color>
+      <colorTwo>(200,133,107)</colorTwo>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>4500</MaxHitPoints>
+    </statBases>
+    <description>This strange mineral is very hard and resilient. Perhaps you could find a way to extract useable materials from it.</description>
+    <building>
+      <isResourceRock>true</isResourceRock>
+      <mineableThing>GU_RawRedMineral</mineableThing>
+      <mineableYield>5</mineableYield>
+      <mineableScatterCommonality>0</mineableScatterCommonality>
+      <mineableScatterLumpSizeRange>
+        <min>20</min>
+        <max>40</max>
+      </mineableScatterLumpSizeRange>
+    </building>
+  </ThingDef>
+
+ 
+
+</Defs>
