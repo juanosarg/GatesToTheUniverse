@@ -52,7 +52,7 @@
 
 
 		<comps>
-
+		
 
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
@@ -66,11 +66,11 @@
 		<defName>GU_FarcasterPortal</defName>
 		<label>farcaster portal</label>
 		<thingClass>GatesToTheUniverse.Building_Farcaster</thingClass>
-		<description>Activate this!</description>
+		<description>Using materials found at Sigma Alcyon IIb, this advanced farcaster can be progressively upgraded and fine-tuned to unlock access to other planets. You will just need to find the requirements first!</description>
 		<graphicData>
 			<texPath>Things/Building/GU_FarcasterDeactivated</texPath>
 			<graphicClass>Graphic_Single</graphicClass>    
-			<drawSize>(3,6)</drawSize>	
+			<drawSize>(6,6)</drawSize>	
 			<shaderType>CutoutComplex</shaderType>
 
 		</graphicData>
@@ -81,7 +81,7 @@
 
 				<texPath>Things/Building/GU_FarcasterActivated</texPath>
 				<graphicClass>Graphic_Single</graphicClass>    
-				<drawSize>(3,6)</drawSize>	
+				<drawSize>(6,6)</drawSize>	
 				<shaderType>CutoutComplex</shaderType>
 			</trapUnarmedGraphicData>
 
@@ -90,17 +90,19 @@
     <tickerType>Normal</tickerType>
 		<costList>
 			<Steel>200</Steel>
-			<Component>2</Component>
+			<Component>8</Component>
+			<GU_RedMineralIngot>20</GU_RedMineralIngot>
+
 
 		</costList>
 		<useHitPoints>True</useHitPoints>
 		<statBases>
-			<MaxHitPoints>50</MaxHitPoints>
+			<MaxHitPoints>400</MaxHitPoints>
 			<WorkToBuild>1500</WorkToBuild>
 			<Flammability>1.0</Flammability>
 			<Beauty>-8</Beauty>
 		</statBases>
-		<size>(3,6)</size>
+		<size>(6,6)</size>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<blockWind>true</blockWind>    <pathCost>70</pathCost>
@@ -113,10 +115,17 @@
 
 		<comps>
 
-
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>500</basePowerConsumption>
+				<startElectricalFires>true</startElectricalFires>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
 		<designationCategory>GU_GatesToTheUniverseTab</designationCategory>
+		<researchPrerequisites><li>GR_AdvancedFarcasterResearch</li></researchPrerequisites>
+
 	</ThingDef>
 	
 	

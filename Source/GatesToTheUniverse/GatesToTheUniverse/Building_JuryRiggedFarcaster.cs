@@ -153,30 +153,38 @@ namespace GatesToTheUniverse
             worldObjectFarcaster.mapGen = DefDatabase<MapGeneratorDef>.GetNamed("GU_FarcasterMapSigmaAlcyon", true);
             Find.WorldObjects.Add(mapParent);
             myMap = new Map();
-            myMap = GetOrGenerateMapUtility.GetOrGenerateMap(mapParent.Tile, Find.World.info.initialMapSize, null);
-            originalBiome = myMap.TileInfo.biome;
-            originalTile = mapParent.Tile;
-            myMap.TileInfo.biome = DefDatabase<BiomeDef>.GetNamed("GU_SigmaAlcyonIIb", true);
-            mapParent.Tile = base.Tile;
 
-            mapFarcast = myMap;
+            LongEventHandler.QueueLongEvent(delegate
+            {
+                myMap = GetOrGenerateMapUtility.GetOrGenerateMap(mapParent.Tile, Find.World.info.initialMapSize, null);
 
-            //Remote Farcaster portal spawning 
+            }, "GU_LinkingWithFarcasters", true, new Action<Exception>(GameAndMapInitExceptionHandlers.ErrorWhileGeneratingMap));
+            LongEventHandler.QueueLongEvent(delegate
+            {
+                originalBiome = myMap.TileInfo.biome;
+                originalTile = mapParent.Tile;
+                myMap.TileInfo.biome = DefDatabase<BiomeDef>.GetNamed("GU_SigmaAlcyonIIb", true);
+                mapParent.Tile = base.Tile;
 
-            Building_AncientFarcaster building_AncientFarcaster = (Building_AncientFarcaster)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("GU_AncientFarcasterPortal", true));
-            building_AncientFarcaster.mapHome = mapHome;
-            building_AncientFarcaster.locationHome = this.Position;
-            building_AncientFarcaster.SetFaction(Faction.OfPlayer);
-            GenSpawn.Spawn(building_AncientFarcaster, myMap.Center, myMap);
-            locationFarcast = building_AncientFarcaster.Position;
+                mapFarcast = myMap;
 
-            //An auxiliary pad too
+                //Remote Farcaster portal spawning 
 
-            Building_Storage building_AncientPad = (Building_Storage)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("GU_AncientFarcasterPad", true));
-            building_AncientPad.SetFaction(Faction.OfPlayer);
-            GenSpawn.Spawn(building_AncientPad, myMap.Center- GenAdj.CardinalDirections[0]*4, myMap);
+                Building_AncientFarcaster building_AncientFarcaster = (Building_AncientFarcaster)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("GU_AncientFarcasterPortal", true));
+                building_AncientFarcaster.mapHome = mapHome;
+                building_AncientFarcaster.locationHome = this.Position;
+                building_AncientFarcaster.SetFaction(Faction.OfPlayer);
+                GenSpawn.Spawn(building_AncientFarcaster, myMap.Center, myMap);
+                locationFarcast = building_AncientFarcaster.Position;
 
-            //Farcaster portal spawning ends here
+                //An auxiliary pad too
+
+                Building_Storage building_AncientPad = (Building_Storage)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("GU_AncientFarcasterPad", true));
+                building_AncientPad.SetFaction(Faction.OfPlayer);
+                GenSpawn.Spawn(building_AncientPad, myMap.Center - GenAdj.CardinalDirections[0] * 4, myMap);
+
+                //Farcaster portal spawning ends here
+            }, "GU_LinkingWithFarcasters", true, new Action<Exception>(GameAndMapInitExceptionHandlers.ErrorWhileGeneratingMap));
 
         }
 

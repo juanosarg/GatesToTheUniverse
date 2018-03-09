@@ -205,7 +205,11 @@ namespace GatesToTheUniverse
             {
                 if (c.GetEdifice(map) == null && c.GetCover(map) == null && caves[c] <= 0f)
                 {
-                    float num5 = map.fertilityGrid.FertilityAt(c);
+                    float num5 = 0;
+                    if (map.fertilityGrid.FertilityAt(c) != 0) {
+                        num5 = (float)0.5;
+                    }
+                   
                     float num6 = num4 * num5;
                     if (Rand.Value < num6)
                     {

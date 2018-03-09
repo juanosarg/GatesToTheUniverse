@@ -19,7 +19,7 @@
       <li>Diggable</li>
     </affordances>
     <terrainFilthDef>FilthSand</terrainFilthDef>
-    <fertility>0.5</fertility>
+    <fertility>0.1</fertility>
     <takeFootprints>True</takeFootprints>
   </TerrainDef>
 

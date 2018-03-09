@@ -23,6 +23,9 @@
   <GU_FirstFarcastingLabel>Farcasting</GU_FirstFarcastingLabel>
   <GU_FirstFarcastingLetter>With a feeling of awe, the first colonist crosses the farcaster portal, arriving at a strange, red-tinged landscape. A pale gas giant looms in the horizon, and a very dim Red Dwarf star can be seen high in the sky. Eerie trees dot the rolling hills, burdened with ripened fruits that look suspiciously similar to gouged eyeballs. The atmosphere seems to be breathable, and the temperature is neither too cold or too hot. All in all, this looks like a promising start to your exploration of the Universe.</GU_FirstFarcastingLetter>
 
+  <!-- Long Events -->
+  
+  <GU_LinkingWithFarcasters>Linking with Farcaster Network</GU_LinkingWithFarcasters>
 
 
 </LanguageData>

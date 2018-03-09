@@ -16,5 +16,19 @@
 		<researchViewY>0</researchViewY>
   </ResearchProjectDef>
 
-
+  <ResearchProjectDef>
+    <defName>GR_AdvancedFarcasterResearch</defName>
+    <label>advanced farcaster research</label>
+    <tab>GU_GatesToTheUniverseResearch</tab>
+    <techLevel>Industrial</techLevel>
+    <description>Using materials found on Sigma Alcyon IIb, you can build a more powerful farcaster, that can be upgraded with different technologies and materials to unlock access to even more distant networks of abandoned farcasters</description>
+    <baseCost>1500</baseCost>
+    <prerequisites>
+      <li>GR_BasicFarcasterResearch</li>
+    </prerequisites>
+    
+		<researchViewX>1</researchViewX>
+		<researchViewY>0</researchViewY>
+  </ResearchProjectDef>
+  
 </Defs>

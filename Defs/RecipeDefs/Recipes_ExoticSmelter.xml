@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+
+  <RecipeDef>
+    <defName>GU_SmeltRedMetal</defName>
+    <label>smelt alcyonite ingots</label>
+    <description>Use heat and strong electromagnets to smelt alcyonite ingots from raw red minerals.</description>
+    <jobString>Smelting alcyonite ingots.</jobString>
+    <workAmount>1600</workAmount>
+    <workSpeedStat>SmeltingSpeed</workSpeedStat>
+    <effectWorking>Smelt</effectWorking>
+    <soundWorking>Recipe_Smelt</soundWorking>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>GU_RawRedMineral</li>
+          </thingDefs>
+        </filter>
+        <count>20</count>
+      </li>
+    </ingredients>
+    <products>
+      <GU_RedMineralIngot>5</GU_RedMineralIngot>
+    </products>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>GU_RawRedMineral</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+ 
+
+</Defs>
