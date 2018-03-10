@@ -12,7 +12,7 @@ namespace GatesToTheUniverse
 {
     class Building_JuryRiggedFarcaster : Building_WorkTable
     {
-        
+
         private bool activatedBool = true;
         private bool confirmDeactivation = false;
         public MapParent mapParent;
@@ -37,14 +37,14 @@ namespace GatesToTheUniverse
             {
                 if (this.activatedBool)
                 {
-                   
+
                     return base.Graphic;
                 }
                 if (this.GraphicactivatedBool == null)
                 {
                     this.GraphicactivatedBool = this.def.building.trapUnarmedGraphicData.GraphicColoredFor(this);
                 }
-               
+
                 return this.GraphicactivatedBool;
             }
         }
@@ -72,52 +72,52 @@ namespace GatesToTheUniverse
             {
                 yield return g;
             }
-           
 
-             if (activatedBool) { 
-                 Command_Action command_Action = new Command_Action();
-                 command_Action.defaultLabel = "GU_EstablishFarcasterLink".Translate();
-                 command_Action.defaultDesc = "GU_EstablishFarcasterLinkSigmaAlcyonDesc".Translate();
-                 command_Action.icon = ContentFinder<Texture2D>.Get("UI/GU_ActivateSigmaAlcyon", true);
-                 command_Action.action = delegate
-                 {
-                     EstablishFarcasterLink();
-                     activatedBool = false;
 
-                 };
+            if (activatedBool) {
+                Command_Action command_Action = new Command_Action();
+                command_Action.defaultLabel = "GU_EstablishFarcasterLink".Translate();
+                command_Action.defaultDesc = "GU_EstablishFarcasterLinkSigmaAlcyonDesc".Translate();
+                command_Action.icon = ContentFinder<Texture2D>.Get("UI/GU_ActivateSigmaAlcyon", true);
+                command_Action.action = delegate
+                {
+                    EstablishFarcasterLink();
+                    activatedBool = false;
+
+                };
                 yield return command_Action;
 
-             } else
-             {
-                 if (!confirmDeactivation)
-                 {
+            } else
+            {
+                if (!confirmDeactivation)
+                {
 
 
-                         Command_Action command_Action2 = new Command_Action();
-                         command_Action2.defaultLabel = "GU_DeactivateFarcasterLink".Translate();
-                         command_Action2.defaultDesc = "GU_DeactivateFarcasterLinkSigmaAlcyonDesc".Translate();
-                         command_Action2.icon = ContentFinder<Texture2D>.Get("UI/GU_DeactivateSigmaAlcyon", true);
-                         command_Action2.action = delegate
-                         {
-                             confirmDeactivation = true;
-                             Messages.Message("GU_FarcasterConfirmDeletion".Translate(), MessageTypeDefOf.PositiveEvent);
+                    Command_Action command_Action2 = new Command_Action();
+                    command_Action2.defaultLabel = "GU_DeactivateFarcasterLink".Translate();
+                    command_Action2.defaultDesc = "GU_DeactivateFarcasterLinkSigmaAlcyonDesc".Translate();
+                    command_Action2.icon = ContentFinder<Texture2D>.Get("UI/GU_DeactivateSigmaAlcyon", true);
+                    command_Action2.action = delegate
+                    {
+                        confirmDeactivation = true;
+                        Messages.Message("GU_FarcasterConfirmDeletion".Translate(), MessageTypeDefOf.PositiveEvent);
 
 
-                         };
-                        yield return command_Action2;
+                    };
+                    yield return command_Action2;
                 }
                 else
-                 {
-                         Command_Action command_Action3 = new Command_Action();
-                         command_Action3.defaultLabel = "GU_DeactivateFarcasterLinkConfirm".Translate();
-                         command_Action3.defaultDesc = "GU_DeactivateFarcasterLinkSigmaAlcyonDesc".Translate();
-                         command_Action3.icon = ContentFinder<Texture2D>.Get("UI/GU_DeactivateSigmaAlcyon", true);
-                         command_Action3.action = delegate
-                         {
-                             activatedBool = true;
-                             confirmDeactivation = false;
-                             DeactivateFarcasterLink();
-                         };
+                {
+                    Command_Action command_Action3 = new Command_Action();
+                    command_Action3.defaultLabel = "GU_DeactivateFarcasterLinkConfirm".Translate();
+                    command_Action3.defaultDesc = "GU_DeactivateFarcasterLinkSigmaAlcyonDesc".Translate();
+                    command_Action3.icon = ContentFinder<Texture2D>.Get("UI/GU_DeactivateSigmaAlcyon", true);
+                    command_Action3.action = delegate
+                    {
+                        activatedBool = true;
+                        confirmDeactivation = false;
+                        DeactivateFarcasterLink();
+                    };
                     yield return command_Action3;
                 }
             }
@@ -186,6 +186,13 @@ namespace GatesToTheUniverse
                 //Farcaster portal spawning ends here
             }, "GU_LinkingWithFarcasters", true, new Action<Exception>(GameAndMapInitExceptionHandlers.ErrorWhileGeneratingMap));
 
+        }
+
+        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
+        {
+            DeactivateFarcasterLink();
+            base.Destroy(mode);
+            
         }
 
         public void DeactivateFarcasterLink()

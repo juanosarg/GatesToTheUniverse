@@ -9,14 +9,19 @@
   <GU_UseJuryRiggedFarcaster>Use jury-rigged farcaster</GU_UseJuryRiggedFarcaster>
   <GU_EstablishFarcasterLink>Establish farcaster link</GU_EstablishFarcasterLink>
   <GU_EstablishFarcasterLinkSigmaAlcyonDesc>Establish farcaster link to an available farcaster at the Sigma Alcyon IIb moon</GU_EstablishFarcasterLinkSigmaAlcyonDesc>
+  <GU_EstablishFarcasterLinkDeltaServitusDesc>Establish farcaster link to an available farcaster at the Delta Servitus IV</GU_EstablishFarcasterLinkDeltaServitusDesc>
   <GU_DeactivateFarcasterLink>Deactivate farcaster link</GU_DeactivateFarcasterLink>
   <GU_DeactivateFarcasterLinkSigmaAlcyonDesc>Deactivate farcaster link to the Sigma Alcyon IIb moon</GU_DeactivateFarcasterLinkSigmaAlcyonDesc>
+  <GU_DeactivateFarcasterLinkAllDesc>Deactivate all outbound farcaster links from this farcaster</GU_DeactivateFarcasterLinkAllDesc>
+
   <GU_FarcasterConfirmDeletion>Are you sure? Destination and everything in it will be lost forever. Click again to confirm</GU_FarcasterConfirmDeletion>
   <GU_DeactivateFarcasterLinkConfirm>Deactivate farcaster link (confirm)</GU_DeactivateFarcasterLinkConfirm>
   <GU_SendThingsToFarcastLocation>Send things</GU_SendThingsToFarcastLocation>
   <GU_SendThingsToFarcastLocationDesc>Send all things in an adjacent Farcaster Pad to the remote location</GU_SendThingsToFarcastLocationDesc>
   
   <GU_PlaceNextToFarcaster>The pad must be built adjacent to a Farcaster portal</GU_PlaceNextToFarcaster>
+  <GU_FarcasterNeedsPower>Advanced farcasters need power to work</GU_FarcasterNeedsPower>
+
 
   <!-- Letters -->
   

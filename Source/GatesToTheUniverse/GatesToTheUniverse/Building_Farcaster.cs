@@ -23,7 +23,7 @@ namespace GatesToTheUniverse
         public SoundDef soundDef = DefDatabase<SoundDef>.GetNamed("GU_FarcasterSound", true);
         public BiomeDef originalBiome;
         public int originalTile;
-        private CompPowerTrader m_Power;
+        private CompPowerTrader PowerManagement;
 
 
 
@@ -48,6 +48,12 @@ namespace GatesToTheUniverse
 
                 return this.GraphicactivatedBool;
             }
+        }
+
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        {
+            base.SpawnSetup(map, respawningAfterLoad);
+            PowerManagement = base.GetComp<CompPowerTrader>();
         }
 
         public override void ExposeData()
@@ -83,16 +89,39 @@ namespace GatesToTheUniverse
                 command_Action.icon = ContentFinder<Texture2D>.Get("UI/GU_ActivateSigmaAlcyon", true);
                 command_Action.action = delegate
                 {
-                    if (this.m_Power.PowerOn) {
-                        EstablishFarcasterLink();
+                   
+                    if (PowerManagement.PowerOn) {
+                        EstablishFarcasterLink("GU_FarcasterDestinationSigmaAlcyon", "GU_FarcasterMapSigmaAlcyon", "GU_SigmaAlcyonIIb");
                         activatedBool = false;
                     }
+                    else Messages.Message("GU_FarcasterNeedsPower".Translate(), MessageTypeDefOf.NegativeEvent);
+
 
                 };
                 yield return command_Action;
 
             }
-            if(!activatedBool)
+            if (activatedBool)
+            {
+                Command_Action command_Action = new Command_Action();
+                command_Action.defaultLabel = "GU_EstablishFarcasterLink".Translate();
+                command_Action.defaultDesc = "GU_EstablishFarcasterLinkDeltaServitusDesc".Translate();
+                command_Action.icon = ContentFinder<Texture2D>.Get("UI/GU_ActivateDeltaServitus", true);
+                command_Action.action = delegate
+                {
+                    if (PowerManagement.PowerOn)
+                    {
+                        EstablishFarcasterLink("GU_FarcasterDestinationDeltaServitus", "GU_FarcasterMapDeltaServitus", "GU_DeltaServitusIV");
+                        activatedBool = false;
+                    }
+                    else Messages.Message("GU_FarcasterNeedsPower".Translate(), MessageTypeDefOf.NegativeEvent);
+
+
+                };
+                yield return command_Action;
+
+            }
+            if (!activatedBool)
             {
                 if (!confirmDeactivation)
                 {
@@ -100,8 +129,8 @@ namespace GatesToTheUniverse
 
                     Command_Action command_Action2 = new Command_Action();
                     command_Action2.defaultLabel = "GU_DeactivateFarcasterLink".Translate();
-                    command_Action2.defaultDesc = "GU_DeactivateFarcasterLinkSigmaAlcyonDesc".Translate();
-                    command_Action2.icon = ContentFinder<Texture2D>.Get("UI/GU_DeactivateSigmaAlcyon", true);
+                    command_Action2.defaultDesc = "GU_DeactivateFarcasterLinkAllDesc".Translate();
+                    command_Action2.icon = ContentFinder<Texture2D>.Get("UI/GU_DeactivateAll", true);
                     command_Action2.action = delegate
                     {
                         confirmDeactivation = true;
@@ -115,8 +144,8 @@ namespace GatesToTheUniverse
                 {
                     Command_Action command_Action3 = new Command_Action();
                     command_Action3.defaultLabel = "GU_DeactivateFarcasterLinkConfirm".Translate();
-                    command_Action3.defaultDesc = "GU_DeactivateFarcasterLinkSigmaAlcyonDesc".Translate();
-                    command_Action3.icon = ContentFinder<Texture2D>.Get("UI/GU_DeactivateSigmaAlcyon", true);
+                    command_Action3.defaultDesc = "GU_DeactivateFarcasterLinkAllDesc".Translate();
+                    command_Action3.icon = ContentFinder<Texture2D>.Get("UI/GU_DeactivateAll", true);
                     command_Action3.action = delegate
                     {
                         activatedBool = true;
@@ -146,16 +175,16 @@ namespace GatesToTheUniverse
 
         }
 
-        public void EstablishFarcasterLink()
+        public void EstablishFarcasterLink(string farcastDestination, string mapGen, string mapBiome)
         {
             mapHome = this.Map;
             Messages.Message("GU_FarcasterActivated".Translate(), MessageTypeDefOf.PositiveEvent);
-            FarcasterDestination worldObjectFarcaster = (FarcasterDestination)WorldObjectMaker.MakeWorldObject(DefDatabase<WorldObjectDef>.GetNamed("GU_FarcasterDestinationSigmaAlcyon", true));
+            FarcasterDestination worldObjectFarcaster = (FarcasterDestination)WorldObjectMaker.MakeWorldObject(DefDatabase<WorldObjectDef>.GetNamed(farcastDestination, true));
             mapParent = (MapParent)worldObjectFarcaster;
             mapParent.Tile = TileFinder.RandomStartingTile();
             mapParent.SetFaction(Faction.OfPlayer);
             worldObjectFarcaster.mapHome = mapHome;
-            worldObjectFarcaster.mapGen = DefDatabase<MapGeneratorDef>.GetNamed("GU_FarcasterMapSigmaAlcyon", true);
+            worldObjectFarcaster.mapGen = DefDatabase<MapGeneratorDef>.GetNamed(mapGen, true);
             Find.WorldObjects.Add(mapParent);
             myMap = new Map();
 
@@ -168,7 +197,7 @@ namespace GatesToTheUniverse
             {
                 originalBiome = myMap.TileInfo.biome;
                 originalTile = mapParent.Tile;
-                myMap.TileInfo.biome = DefDatabase<BiomeDef>.GetNamed("GU_SigmaAlcyonIIb", true);
+                myMap.TileInfo.biome = DefDatabase<BiomeDef>.GetNamed(mapBiome, true);
                 mapParent.Tile = base.Tile;
 
                 mapFarcast = myMap;
@@ -190,6 +219,13 @@ namespace GatesToTheUniverse
 
                 //Farcaster portal spawning ends here
             }, "GU_LinkingWithFarcasters", true, new Action<Exception>(GameAndMapInitExceptionHandlers.ErrorWhileGeneratingMap));
+
+        }
+
+        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
+        {
+            DeactivateFarcasterLink();
+            base.Destroy(mode);
 
         }
 

@@ -56,7 +56,7 @@
       <categories>
         <li>Metallic</li>
       </categories>
-      <color>(180,173,150)</color>
+      <color>(140,30,30)</color>
       <commonality>0</commonality>
       <constructEffect>ConstructMetal</constructEffect>
       <soundImpactStuff>BulletImpactMetal</soundImpactStuff>

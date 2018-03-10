@@ -5,7 +5,7 @@
 		<defName>GU_JuryRiggedFarcasterPortal</defName>
 		<label>jury-rigged farcaster portal</label>
 		<thingClass>GatesToTheUniverse.Building_JuryRiggedFarcaster</thingClass>
-		<description>This contraption is a primitive attempt at reverse engineering the farcaster technology. Hopefully it should link with the derelict network of farcasters around Sigma Alcyon IIb.</description>
+		<description>This contraption is a primitive attempt at reverse engineering the farcaster technology. Hopefully it should link with the derelict network of farcasters around Sigma Alcyon IIb. You will need to trade for a Contained Singularity to build it.</description>
 		<graphicData>
 			<texPath>Things/Building/GU_FarcasterJuryRigged</texPath>
 			<graphicClass>Graphic_Single</graphicClass>    

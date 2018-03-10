@@ -63,7 +63,7 @@
 	</ThingDef>
 	
 	<ThingDef ParentName="PlantBase">
-		<defName>GU_RedLeaves2</defName>
+		<defName>GU_RedPlantsTall</defName>
 		<label>alien plant</label>
 		<description>Wild grass. Grows anywhere there is a little light and minimally fertile ground.</description>
 		<statBases>
