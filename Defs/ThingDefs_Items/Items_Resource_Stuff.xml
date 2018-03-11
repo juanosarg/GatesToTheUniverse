@@ -43,8 +43,8 @@
     <useHitPoints>false</useHitPoints>
     <resourceReadoutAlwaysShow>true</resourceReadoutAlwaysShow>
     <statBases>
-      <MarketValue>1</MarketValue>
-      <Mass>0.007</Mass>
+      <MarketValue>5</MarketValue>
+      <Mass>1</Mass>
       <SharpDamageMultiplier>1.3</SharpDamageMultiplier>
       <BluntDamageMultiplier>1.3</BluntDamageMultiplier>
     </statBases>

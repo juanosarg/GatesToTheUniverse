@@ -168,7 +168,7 @@
       <color>(120,50,50)</color>
     </graphicData>
     <statBases>
-      <MarketValue>1.9</MarketValue>
+      <MarketValue>5</MarketValue>
       <Mass>1</Mass>
       <SharpDamageMultiplier>0.5</SharpDamageMultiplier>
     </statBases>
@@ -183,6 +183,7 @@
       <soundMeleeHitBlunt>MeleeHit_Stone</soundMeleeHitBlunt>
       <stuffAdjective>rose quartz</stuffAdjective>
       <statFactors>
+
         <Beauty>1.1</Beauty>  
         <MarketValue>0.4</MarketValue>
         <MaxHitPoints>1.4</MaxHitPoints>
