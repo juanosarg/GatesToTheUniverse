@@ -31,7 +31,13 @@ namespace GatesToTheUniverse
         ThingDef rockRubble;
 
 
-
+        public override int SeedPart
+        {
+            get
+            {
+                return 826504674;
+            }
+        }
 
         public BiomeDef chooseABiome()
         {
@@ -48,7 +54,7 @@ namespace GatesToTheUniverse
 
         }
 
-        public override void Generate(Map map)
+        public override void Generate(Map map, GenStepParams parms)
         {
            
             List<IntVec3> list = new List<IntVec3>();
@@ -69,7 +75,7 @@ namespace GatesToTheUniverse
                 {
                     terrainDef = this.TerrainFrom(current, map, elevation[current], fertility[current], false);
                 }
-                if ((terrainDef == TerrainDefOf.WaterMovingShallow || terrainDef == TerrainDefOf.WaterMovingDeep) && edifice != null)
+                if ((terrainDef == TerrainDefOf.WaterMovingShallow || terrainDef == TerrainDefOf.WaterMovingChestDeep) && edifice != null)
                 {
                     list.Add(edifice.Position);
                     edifice.Destroy(DestroyMode.Vanish);
@@ -175,68 +181,18 @@ namespace GatesToTheUniverse
                     break;
             }
             genStep_ScatterLumpsMineable.countPer10kCellsRange = new FloatRange(num3, num3);
-            genStep_ScatterLumpsMineable.Generate(map);
+            genStep_ScatterLumpsMineable.Generate(map, parms);
             map.regionAndRoomUpdater.Enabled = true;
 
 
             //Rock gen ends here
 
-            map.regionAndRoomUpdater.Enabled = false;
-            List<ThingDef> list3 = biome1.AllWildPlants.ToList<ThingDef>();
-            for (int i = 0; i < list3.Count; i++)
-            {
-                GenStep_TerrainFarcasterDeltaServitus.numExtant.Add(list3[i], 0);
-            }
-            GenStep_TerrainFarcasterDeltaServitus.desiredProportions = GenPlant.CalculateDesiredPlantProportions(biome1);
-            float num4 = biome1.plantDensity;
-            foreach (IntVec3 c in map.AllCells.InRandomOrder(null))
-            {
-                if (c.GetEdifice(map) == null && c.GetCover(map) == null && caves[c] <= 0f)
-                {
-                    float num5 = map.fertilityGrid.FertilityAt(c);
-                    float num6 = num4 * num5;
-                    if (Rand.Value < num6)
-                    {
-                        IEnumerable<ThingDef> source = from def in list3
-                                                       where def.CanEverPlantAt(c, map)
-                                                       select def;
-                        if (source.Any<ThingDef>())
-                        {
-                            ThingDef thingDef = source.RandomElementByWeight((ThingDef x) => PlantChoiceWeight(x, map));
-                            int randomInRange = thingDef.plant.wildClusterSizeRange.RandomInRange;
-                            for (int j = 0; j < randomInRange; j++)
-                            {
-                                IntVec3 c2;
-                                if (j == 0)
-                                {
-                                    c2 = c;
-                                }
-                                else if (!GenPlantReproduction.TryFindReproductionDestination(c, thingDef, SeedTargFindMode.MapGenCluster, map, out c2))
-                                {
-                                    break;
-                                }
-                                Plant plant = (Plant)ThingMaker.MakeThing(thingDef, null);
-                                plant.Growth = Rand.Range(0.07f, 1f);
-                                if (plant.def.plant.LimitedLifespan)
-                                {
-                                    plant.Age = Rand.Range(0, Mathf.Max(plant.def.plant.LifespanTicks - 50, 0));
-                                }
-                                GenSpawn.Spawn(plant, c2, map);
-                                GenStep_TerrainFarcasterDeltaServitus.RecordAdded(thingDef);
-                            }
-                        }
-                    }
-                }
-            }
-            GenStep_TerrainFarcasterDeltaServitus.numExtant.Clear();
-            GenStep_TerrainFarcasterDeltaServitus.desiredProportions.Clear();
-            GenStep_TerrainFarcasterDeltaServitus.totalExtant = 0;
-            map.regionAndRoomUpdater.Enabled = true;
+         
 
             // Plant gen ends here
             
             int num7 = 0;
-            while (!map.wildSpawner.AnimalEcosystemFull)
+            while (!map.wildAnimalSpawner.AnimalEcosystemFull)
             {
                 num7++;
                 if (num7 >= 10)
@@ -274,14 +230,14 @@ namespace GatesToTheUniverse
         {
             PawnKindDef pawnKindDef = (from a in biome1.AllWildAnimals
                                        where map.mapTemperature.SeasonAcceptableFor(a.race)
-                                       select a).RandomElementByWeight((PawnKindDef def) => biome1.CommonalityOfAnimal(def) / def.wildSpawn_GroupSizeRange.Average);
+                                       select a).RandomElementByWeight((PawnKindDef def) => biome1.CommonalityOfAnimal(def) / def.wildGroupSize.Average);
             if (pawnKindDef == null)
             {
                 Log.Error("No spawnable animals right now.");
                 return false;
             }
-            int randomInRange = pawnKindDef.wildSpawn_GroupSizeRange.RandomInRange;
-            int radius = Mathf.CeilToInt(Mathf.Sqrt((float)pawnKindDef.wildSpawn_GroupSizeRange.max));
+            int randomInRange = pawnKindDef.wildGroupSize.RandomInRange;
+            int radius = Mathf.CeilToInt(Mathf.Sqrt((float)pawnKindDef.wildGroupSize.max));
             for (int i = 0; i < randomInRange; i++)
             {
                 IntVec3 loc2 = CellFinder.RandomClosewalkCellNear(loc, map, radius, null);
@@ -316,19 +272,7 @@ namespace GatesToTheUniverse
         }
 
 
-        private float PlantChoiceWeight(ThingDef def, Map map)
-        {
-            float num = biome1.CommonalityOfPlant(def);
-            if (GenStep_TerrainFarcasterDeltaServitus.totalExtant > 100)
-            {
-                float num2 = (float)GenStep_TerrainFarcasterDeltaServitus.numExtant[def] / (float)GenStep_TerrainFarcasterDeltaServitus.totalExtant;
-                if (num2 < GenStep_TerrainFarcasterDeltaServitus.desiredProportions[def] * 0.8f)
-                {
-                    num *= 4f;
-                }
-            }
-            return num / def.plant.wildClusterSizeRange.Average;
-        }
+       
 
         private static void RecordAdded(ThingDef plantDef)
         {
@@ -344,14 +288,14 @@ namespace GatesToTheUniverse
 
             if (terrainDef == null && preferSolid)
             {
-                return GenStep_RocksFromGrid.RockDefAt(c).naturalTerrain;
+                return GenStep_RocksFromGrid.RockDefAt(c).building.naturalTerrain;
             }
             //TerrainDef terrainDef2 = BeachMaker.BeachTerrainAt(c, map.Biome);
             if (terrainDef2 == TerrainDefOf.WaterOceanDeep)
             {
                 return terrainDef2;
             }
-            if (terrainDef == TerrainDefOf.WaterMovingShallow || terrainDef == TerrainDefOf.WaterMovingDeep)
+            if (terrainDef == TerrainDefOf.WaterMovingShallow || terrainDef == TerrainDefOf.WaterOceanDeep)
             {
                 return terrainDef;
             }
@@ -365,7 +309,7 @@ namespace GatesToTheUniverse
             }
             for (int i = 0; i < biome1.terrainPatchMakers.Count; i++)
             {
-                terrainDef2 = biome1.terrainPatchMakers[i].TerrainAt(c, map);
+                terrainDef2 = biome1.terrainPatchMakers[i].TerrainAt(c, map,fertility);
                 if (terrainDef2 != null)
                 {
                     return terrainDef2;
@@ -430,7 +374,7 @@ namespace GatesToTheUniverse
                     {
                         return;
                     }
-                    if (!map.terrainGrid.TerrainAt(intVec).affordances.Contains(TerrainAffordance.Heavy))
+                    if (!map.terrainGrid.TerrainAt(intVec).affordances.Contains(TerrainAffordanceDefOf.Heavy))
                     {
                         return;
                     }
@@ -504,5 +448,28 @@ namespace GatesToTheUniverse
         {
             return c.Roofed(map) && c.GetRoof(map).isNatural;
         }
+
+        private static Dictionary<ThingDef, float> CalculateDesiredPlantProportions(BiomeDef biome)
+        {
+            Dictionary<ThingDef, float> dictionary = new Dictionary<ThingDef, float>();
+            float num = 0f;
+            foreach (ThingDef current in DefDatabase<ThingDef>.AllDefs)
+            {
+                if (current.plant != null)
+                {
+                    float num2 = biome.CommonalityOfPlant(current);
+                    dictionary.Add(current, num2);
+                    num += num2;
+                }
+            }
+            foreach (ThingDef current2 in biome.AllWildPlants)
+            {
+                Dictionary<ThingDef, float> dictionary2;
+                ThingDef key;
+                (dictionary2 = dictionary)[key = current2] = dictionary2[key] / num;
+            }
+            return dictionary;
+        }
+
     }
 }

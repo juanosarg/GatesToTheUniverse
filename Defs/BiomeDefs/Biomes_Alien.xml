@@ -8,11 +8,9 @@
     <workerClass>BiomeWorker_Desert</workerClass>
     <animalDensity>1.9</animalDensity>
     <plantDensity>0.30</plantDensity>
-    <factionBaseSelectionWeight>0.9</factionBaseSelectionWeight>
-    <pathCost_spring>1750</pathCost_spring>
-    <pathCost_summer>1750</pathCost_summer>
-    <pathCost_fall>1750</pathCost_fall>
-    <pathCost_winter>44000</pathCost_winter>
+    <settlementSelectionWeight>0.9</settlementSelectionWeight>
+        <movementDifficulty>1</movementDifficulty>
+
     <soundsAmbient>
       <li>AmbientNightInsects_Standard</li>
     </soundsAmbient>
@@ -71,11 +69,9 @@
     <workerClass>BiomeWorker_Desert</workerClass>
     <animalDensity>1.9</animalDensity>
     <plantDensity>0.30</plantDensity>
-    <factionBaseSelectionWeight>0.9</factionBaseSelectionWeight>
-    <pathCost_spring>1750</pathCost_spring>
-    <pathCost_summer>1750</pathCost_summer>
-    <pathCost_fall>1750</pathCost_fall>
-    <pathCost_winter>44000</pathCost_winter>
+    <settlementSelectionWeight>0.9</settlementSelectionWeight>
+            <movementDifficulty>1</movementDifficulty>
+
     <texture>UI/GU_ActivateSigmaAlcyon</texture>
     <soundsAmbient>
       <li>AmbientNightInsects_Standard</li>

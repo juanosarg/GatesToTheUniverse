@@ -9,7 +9,7 @@ namespace GatesToTheUniverse
 {
     public class JobDriver_JuryRiggedFarcaster : JobDriver
     {
-        public override bool TryMakePreToilReservations()
+        public override bool TryMakePreToilReservations(bool whatever)
         {
             return this.pawn.Reserve(this.job.targetA, this.job, 1, -1, null);
         }

@@ -7,7 +7,7 @@ using Verse;
 
 namespace GatesToTheUniverse
 {
-    class FarcasterDestination : FactionBase
+    class FarcasterDestination : SettlementBase
     {
         public bool shouldBeDeleted;
         public Map mapHome;

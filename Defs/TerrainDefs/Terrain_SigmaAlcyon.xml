@@ -18,7 +18,7 @@
       <li>Heavy</li>
       <li>Diggable</li>
     </affordances>
-    <terrainFilthDef>FilthSand</terrainFilthDef>
+    <generatedFilth>Filth_Sand</generatedFilth>
     <fertility>0.1</fertility>
     <takeFootprints>True</takeFootprints>
   </TerrainDef>
@@ -40,7 +40,7 @@
       <li>GrowSoil</li>
       <li>Diggable</li>
     </affordances>
-    <terrainFilthDef>FilthDirt</terrainFilthDef>
+    <generatedFilth>Filth_Dirt</generatedFilth>
     <fertility>0</fertility>
     <takeFootprints>True</takeFootprints>
   </TerrainDef>
@@ -101,7 +101,7 @@
       <Beauty>-1</Beauty>
       <Cleanliness>-1</Cleanliness>
     </statBases>
-    <terrainFilthDef>FilthDirt</terrainFilthDef>
+    <generatedFilth>Filth_Dirt</generatedFilth>
     <affordances>
       <li>Light</li>
       <li>Heavy</li>
@@ -126,7 +126,7 @@
       <Beauty>-1</Beauty>
       <Cleanliness>-1</Cleanliness>
     </statBases>
-    <terrainFilthDef>FilthDirt</terrainFilthDef>
+    <generatedFilth>Filth_Dirt</generatedFilth>
     <affordances>
       <li>Light</li>
       <li>Heavy</li>

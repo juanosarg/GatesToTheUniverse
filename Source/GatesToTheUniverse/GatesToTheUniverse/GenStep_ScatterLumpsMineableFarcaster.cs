@@ -13,8 +13,14 @@ namespace GatesToTheUniverse
 
         [Unsaved]
         protected List<IntVec3> recentLumpCells = new List<IntVec3>();
-
-        public override void Generate(Map map)
+        public override int SeedPart
+        {
+            get
+            {
+                return 826504673;
+            }
+        }
+        public override void Generate(Map map, GenStepParams parms)
         {
             this.minSpacing = 5f;
             this.warnOnFail = false;
