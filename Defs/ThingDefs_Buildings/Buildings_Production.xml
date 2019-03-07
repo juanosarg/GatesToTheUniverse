@@ -22,7 +22,7 @@
     <constructEffect>ConstructMetal</constructEffect>
     <costList>
       <Steel>170</Steel>
-      <Component>2</Component>
+      <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
     <altitudeLayer>Building</altitudeLayer>
     <fillPercent>0.5</fillPercent>
@@ -50,7 +50,6 @@
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
         <basePowerConsumption>500</basePowerConsumption>
-        <startElectricalFires>true</startElectricalFires>
       </li>
       <li Class="CompProperties_Flickable"/>
       <li Class="CompProperties_Glower">

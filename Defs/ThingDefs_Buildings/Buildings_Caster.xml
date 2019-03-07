@@ -29,7 +29,7 @@
     <tickerType>Normal</tickerType>
 		<costList>
 			<Steel>200</Steel>
-			<Component>5</Component>
+			<ComponentIndustrial>5</ComponentIndustrial>
 			<GU_ContainedSingularity>1</GU_ContainedSingularity>
 
 		</costList>
@@ -90,7 +90,7 @@
     <tickerType>Normal</tickerType>
 		<costList>
 			<Steel>200</Steel>
-			<Component>8</Component>
+			<ComponentIndustrial>8</ComponentIndustrial>
 			<GU_RedMineralIngot>20</GU_RedMineralIngot>
 
 
@@ -118,7 +118,6 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>500</basePowerConsumption>
-				<startElectricalFires>true</startElectricalFires>
 				<shortCircuitInRain>false</shortCircuitInRain>
 			</li>
 			<li Class="CompProperties_Breakdownable"/>

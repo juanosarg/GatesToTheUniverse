@@ -5,7 +5,7 @@
     <category>Building</category>
     <selectable>true</selectable>
     <drawerType>MapMeshOnly</drawerType>
-    <filthLeaving>RockRubble</filthLeaving>
+    <filthLeaving>Filth_RubbleRock</filthLeaving>
 		<scatterableOnMapGen>false</scatterableOnMapGen>
 	</ThingDef>
 
@@ -28,13 +28,14 @@
     <coversFloor>true</coversFloor>
     <neverMultiSelect>true</neverMultiSelect>
     <rotatable>false</rotatable>
-    <saveCompressible>true</saveCompressible>
+    <saveCompressible>false</saveCompressible>
     <holdsRoof>true</holdsRoof>
     <staticSunShadowHeight>1.0</staticSunShadowHeight>
     <blockLight>true</blockLight>
     <mineable>true</mineable>
     <statBases>
       <Flammability>0</Flammability>
+	  <Beauty>-2</Beauty>
     </statBases>
     <building>
       <isInert>true</isInert>
@@ -64,7 +65,7 @@
     <designateHaulable>true</designateHaulable>
     <saveCompressible>true</saveCompressible>
     <stackLimit>1</stackLimit>
-    <tradeability>Never</tradeability>
+    <tradeability>None</tradeability>
   </ThingDef>
 
   <ThingDef ParentName="GU_ChunkBase" Name="GU_ChunkRockBase" Abstract="True">
@@ -82,8 +83,8 @@
     <ThingDef ParentName="ResourceBase" Name="GU_StoneBlocksBase" Abstract="True">
     <description>Blocks of stone. Mostly useful for building long-lasting, simple structures.</description>
     <graphicData>
-      <texPath>Things/Item/Resource/StoneBlocks</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+       <texPath>Things/Item/Resource/StoneBlocks</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <soundInteract>Stone_Drop</soundInteract>
     <soundDrop>Stone_Drop</soundDrop>
@@ -133,8 +134,7 @@
       <color>(120,50,50)</color>
     </graphicData>
     <statBases>
-	  <Flammability>0</Flammability>
-      <Beauty>-2</Beauty>
+	 
       <MaxHitPoints>400</MaxHitPoints>
     </statBases>
     <building>
@@ -178,7 +178,7 @@
 	      <commonality>0</commonality>
 
       <color>(120,50,50)</color>
-      <soundImpactStuff>BulletImpactGround</soundImpactStuff>
+      <soundImpactStuff>BulletImpact_Ground</soundImpactStuff>
       <soundMeleeHitSharp>MeleeHit_Stone</soundMeleeHitSharp>
       <soundMeleeHitBlunt>MeleeHit_Stone</soundMeleeHitBlunt>
       <stuffAdjective>rose quartz</stuffAdjective>
@@ -234,8 +234,7 @@
       
     </graphicData>
     <statBases>
-	  <Flammability>0</Flammability>
-      <Beauty>-2</Beauty>
+	
       <MaxHitPoints>400</MaxHitPoints>
     </statBases>
     <building>

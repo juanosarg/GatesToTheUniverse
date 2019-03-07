@@ -17,7 +17,7 @@
 		</inspectorTabs>
 		<costList>
 			<Steel>200</Steel>
-			<Component>2</Component>
+			<ComponentIndustrial>2</ComponentIndustrial>
 
 		</costList>
 		<useHitPoints>True</useHitPoints>

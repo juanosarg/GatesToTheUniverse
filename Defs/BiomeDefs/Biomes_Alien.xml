@@ -10,7 +10,7 @@
     <plantDensity>0.30</plantDensity>
     <settlementSelectionWeight>0.9</settlementSelectionWeight>
         <movementDifficulty>1</movementDifficulty>
-
+<wildPlantRegrowDays>25</wildPlantRegrowDays>
     <soundsAmbient>
       <li>AmbientNightInsects_Standard</li>
     </soundsAmbient>
@@ -116,7 +116,7 @@
 			
 		</wildPlants>
 		<wildAnimals>
-			<Centipede>0.01</Centipede>
+			<Mech_Centipede>0.01</Mech_Centipede>
 
     </wildAnimals>
   </BiomeDef>

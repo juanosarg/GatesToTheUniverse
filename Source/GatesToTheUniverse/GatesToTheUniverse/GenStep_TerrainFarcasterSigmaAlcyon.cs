@@ -200,7 +200,17 @@ namespace GatesToTheUniverse
 
             //Rock gen ends here
 
-          
+            
+            float currentPlantDensity = biome1.plantDensity;
+            float currentWholeMapNumDesiredPlants = map.wildPlantSpawner.CurrentWholeMapNumDesiredPlants;
+            foreach (IntVec3 current in map.cellsInRandomOrder.GetAll())
+            {
+                if (!Rand.Chance(0.001f))
+                {
+                    map.wildPlantSpawner.CheckSpawnWildPlantAt(current, currentPlantDensity, currentWholeMapNumDesiredPlants, true);
+                }
+            }
+            map.regionAndRoomUpdater.Enabled = true;
 
             // Plant gen ends here
 
@@ -441,5 +451,8 @@ namespace GatesToTheUniverse
         {
             return c.Roofed(map) && c.GetRoof(map).isNatural;
         }
+
+
+
     }
 }

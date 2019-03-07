@@ -44,7 +44,7 @@ namespace GatesToTheUniverse
             theBaseRocks = DefDatabase<TerrainDef>.GetNamed("GU_Piping", true);
             theRockChunks = DefDatabase<ThingDef>.GetNamed("ChunkSlagSteel", true);
             theRocksThemselves=DefDatabase<ThingDef>.GetNamed("GU_AncientMetals", true);
-            rockRubble= DefDatabase<ThingDef>.GetNamed("FilthAsh", true);
+            rockRubble= DefDatabase<ThingDef>.GetNamed("Filth_Ash", true);
 
             /*theBaseRocks = DefDatabase<TerrainDef>.GetNamed("GU_AncientMetals", true);
             theRockChunks = DefDatabase<ThingDef>.GetNamed("ChunkSlagSteel", true);

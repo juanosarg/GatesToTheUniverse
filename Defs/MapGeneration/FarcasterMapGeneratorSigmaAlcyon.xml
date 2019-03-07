@@ -8,7 +8,7 @@
       <li>GU_CavesSigmaAlcyon</li>
       <li>GU_TerrainSigmaAlcyon</li>
       <li>GU_FindPlayerStartSpotSigmaAlcyon</li>
-      <li>GU_PlantsSigmaAlcyon</li>
+    
       <li>GU_FogSigmaAlcyon</li>
      
     </genSteps>
@@ -53,12 +53,7 @@
   </GenStepDef>
   
     
-    <GenStepDef>
-    <defName>GU_PlantsSigmaAlcyon</defName>
-    <order>800</order>
-    <genStep Class="GenStep_Plants"/>
-  </GenStepDef>
-  
+    
   <GenStepDef>
     <defName>GU_FogSigmaAlcyon</defName>
    
